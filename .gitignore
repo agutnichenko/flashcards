@@ -28,3 +28,9 @@ Gemfile.lock
 .scss
 .coffee
 _helper.rb
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/flashcards.iml
+.idea/.name
