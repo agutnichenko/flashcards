@@ -1,2 +1,2 @@
-t = Time.new
+t = Time.now.strftime("%D")
 p t
