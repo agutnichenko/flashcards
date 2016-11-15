@@ -5,7 +5,6 @@ class CreateCards < ActiveRecord::Migration[5.0]
       t.string :Translated_text
       t.float :Review_date
       t.timestamps
-      #:created_at, :updated_at
     end
   end
 end
