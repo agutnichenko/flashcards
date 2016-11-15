@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   def cards
     @cards = Card.all
     render text: @cards.map {|x|
-      p x.Original_text, x.Translated_text, x.Review_date
+      p x.original_text, x.translated_text, x.review_date
     }.join("</br>")
   end
 
