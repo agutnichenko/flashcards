@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'cards' => 'cards#cards'
+  get 'cards' => 'cards#index'
   get 'home' => 'home#index'
   root 'home#index'
 
