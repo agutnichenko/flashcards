@@ -1,6 +1,12 @@
-<%= render text: @cards.map { |x|
-             p x.original_text, x.translated_text, x.review_date
-           } %>
+<ul>
+  <% @cards.each do |user| %>
+      <li><%= user.original_text%></li>
+      <li><%= user.translated_text%></li>
+      <li><%= user.review_date%></li>
+  <% end %>
+</ul>
 
-<%#= time_format(@cards.review_date)%>
+
+
+
 
