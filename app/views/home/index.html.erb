@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html>
 <head>
   <title>Флэшкарточкер</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -10,8 +11,9 @@
   <header class="clearfix">
     <h1>Флэшкарточкер</h1>
     <ul class="navigation-links">
-      <li><a href="#">Все карточки</a></li>
-      <li><a href="#">Добавить карточку</a></li>
+      <%= link_to "Все карточки", "cards" %>
+      <%= link_to "Добавить карточку", "add_card" %>
+      <%= yield %>
     </ul>
   </header>
 
@@ -23,3 +25,4 @@
 
 </section>
 </body>
+</html>
