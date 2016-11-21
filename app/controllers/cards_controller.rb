@@ -1,12 +1,14 @@
 class CardsController < ApplicationController;
 
+  before_filter :find_card, only: [:show, :edit, :update, :destroy]
+
   def index
     @cards = Card.all
   end
 
   def show
-    unless @card = Card.find(params[:id])
-    #unless @card = Card.where(id: params[:id]).first
+    unless @card
+      #unless @card = Card.where(id: params[:id]).first
       render text: 'Page not found', status: 404
     end
   end
@@ -17,7 +19,6 @@ class CardsController < ApplicationController;
 
   def edit
     params.permit!
-    @card = Card.find(params[:id])
   end
 
   def create
@@ -32,7 +33,6 @@ class CardsController < ApplicationController;
 
   def update
     params.permit!
-    @card = Card.find(params[:id])
     @card.update_attributes(params[:card])
     if @card.errors.empty?
       redirect_to card_path(@card)
@@ -45,6 +45,12 @@ class CardsController < ApplicationController;
     @card = Card.find(params[:id])
     @card.destroy
     redirect_to action: "index"
+  end
+
+  private
+
+  def find_card
+    @card = Card.find(params[:id])
   end
 
 end
