@@ -1,10 +1,5 @@
 <h1>create new card</h1>
 <p><%= form_for @card do |f| %></p>
-      <p>original text: <%= f.text_field :original_text %></p>
-
-      <p>translated text: <%= f.text_field :translated_text %></p>
-
-      <p>review date: <%= f.datetime_select :review_date %></p>
-
+      <%= render partial: "shared/form", locals: {f: f} %>
       <p><%= f.submit "Create flashcard" %></p>
   <% end %>
