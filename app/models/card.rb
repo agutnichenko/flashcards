@@ -6,7 +6,7 @@ class Card < ApplicationRecord
   before_validation :is_automatically_set
 
   def is_automatically_set
-    self.review_date = 3.days.from_now
+    self.review_date ||= 3.days.from_now
   end
 
   def check_uniqueness
