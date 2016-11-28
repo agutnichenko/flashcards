@@ -8,7 +8,6 @@ class CardsController < ApplicationController;
 
   def show
     unless @card
-      #unless @card = Card.where(id: params[:id]).first
       render text: 'Page not found', status: 404
     end
   end
@@ -24,7 +23,7 @@ class CardsController < ApplicationController;
   def create
     params.permit!
     @card = Card.create(params[:card])
-    if @card.errors.empty?
+    if @card.valid?
       redirect_to card_path(@card), notice: 'card is created!'
     else
       render 'new'
@@ -34,7 +33,7 @@ class CardsController < ApplicationController;
   def update
     params.permit!
     @card.update_attributes(params[:card])
-    if @card.errors.empty?
+    if @card.valid?
       redirect_to card_path(@card)
     else
       render 'edit'
