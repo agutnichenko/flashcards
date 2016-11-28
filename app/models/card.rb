@@ -5,7 +5,7 @@ class Card < ApplicationRecord
   before_create :is_automatically_set
 
   def is_automatically_set
-    self.review_date = Time.new.to_s[0..-18] + (Time.new.day + 3).to_s
+    self.review_date = 3.days.from_now
   end
 
 end
