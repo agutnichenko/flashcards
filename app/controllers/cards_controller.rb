@@ -16,9 +16,7 @@ class CardsController < ApplicationController;
     @card = Card.new
   end
 
-  def edit
-    params.permit!
-  end
+  def edit; end
 
   def create
     params.permit!

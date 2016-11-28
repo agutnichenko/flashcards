@@ -16,6 +16,7 @@
             <td><%= i.original_text %></td>
             <td><%= i.translated_text %></td>
             <td><%= i.review_date %></td>
+            <td><%=t('uniqueness') %></td>
             <td><%= link_to "Редактировать", edit_path(i)%></td>
             <td><%= button_to "Удалить", card_path(i), method: :delete, data: { confirm: "indeed?" }%></td>
           </tr>
