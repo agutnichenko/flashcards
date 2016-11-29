@@ -1,12 +1,26 @@
-<ul>
-  <% @cards.each do |user| %>
-      <li><%= user.original_text%></li>
-      <li><%= user.translated_text%></li>
-      <li><%= user.review_date%></li>
-  <% end %>
-</ul>
+<h1>Cards</h1>
+<% if @cards.empty? %>
+    <b>no items in store</b>
+<% else %>
+    <table>
+      <tr>
+        <th>card id</th>
+        <th>original_text</th>
+        <th>translated_text</th>
+        <th>review_date</th>
+      </tr>
 
-
+      <% @cards.each do |i| %>
+          <tr>
+            <td><%= link_to i.id, card_path(i) %></td>
+            <td><%= i.original_text %></td>
+            <td><%= i.translated_text %></td>
+            <td><%= i.review_date %></td>
+            <td><%= link_to "Редактировать", edit_path(i)%></td>
+            <td><%= button_to "Удалить", card_path(i), method: :delete, data: { confirm: "indeed?" }%></td>
+          </tr>
+      <% end %>
+<% end %>
 
 
 

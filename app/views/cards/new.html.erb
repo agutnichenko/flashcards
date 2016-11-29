@@ -1,0 +1,5 @@
+<h1>create new card</h1>
+<p><%= form_for @card do |f| %></p>
+      <%= render partial: "shared/form", locals: {f: f} %>
+      <p><%= f.submit "Create flashcard", class: 'btn btn-success'%></p>
+  <% end %>
