@@ -12,12 +12,14 @@ require 'open-uri'
 page = Nokogiri::HTML(open('http://www.languagedaily.com/learn-german/vocabulary/common-german-words'))
 @words = []
 
+p 'start seeding'
+
 page.css("tr").each do |row|
   orig = row.xpath('td[2]')
   trans = row.xpath('td[3]')
   @words << {original_text: orig.text, translated_text: trans.text}
 end
 
-@words.each do |card_attrs|
-  Card.create(card_attrs)
-end
+Card.create(@words)
+
+p 'finishing seeding'

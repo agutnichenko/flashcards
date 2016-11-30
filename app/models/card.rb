@@ -14,4 +14,5 @@ class Card < ApplicationRecord
       errors.add(:base, I18n.t('uniqueness'))
     end
   end
+
 end
