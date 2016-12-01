@@ -11,8 +11,8 @@
   <header class="clearfix">
     <h1>Флэшкарточкер</h1>
     <ul class="navigation-links">
-      <%= link_to "Все карточки", "cards" %>
-      <%= link_to "Добавить карточку", "new" %>
+      <%= link_to "Все карточки", cards_path %>
+      <%= link_to "Добавить карточку", new_card_path %>
       <%= yield %>
     </ul>
   </header>
