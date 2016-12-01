@@ -10,14 +10,14 @@
         <th>review_date</th>
       </tr>
 
-      <% @cards.each do |i| %>
+      <% @cards.each do |card| %>
           <tr>
-            <td><%= link_to i.id, card_path(i) %></td>
-            <td><%= i.original_text %></td>
-            <td><%= i.translated_text %></td>
-            <td><%= i.review_date %></td>
-            <td><%= link_to "Редактировать", edit_path(i)%></td>
-            <td><%= button_to "Удалить", card_path(i), method: :delete, data: { confirm: "indeed?" }%></td>
+            <td><%= link_to card.id, card_path(card) %></td>
+            <td><%= card.original_text %></td>
+            <td><%= card.translated_text %></td>
+            <td><%= card.review_date %></td>
+            <td><%= link_to "Редактировать", edit_path(card)%></td>
+            <td><%= button_to "Удалить", card_path(card), method: :delete, data: { confirm: "indeed?" }%></td>
           </tr>
       <% end %>
 <% end %>
