@@ -1,0 +1,2 @@
+module TrainersControllerHelper
+end

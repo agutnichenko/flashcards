@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   # get 'home' => 'home#index'
   root 'home#index'
   resources :cards
-
+  resources :home
 end

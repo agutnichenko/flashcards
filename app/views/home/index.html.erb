@@ -23,6 +23,14 @@
     </p>
   </section>
 
-</section>
+  <h1>Edit card</h1>
+
+  <p><%= form_for  @random_card do |f| %></p>
+        <%= f.hidden_field :original_text %>
+        <p>translated text: <%= f.text_field :translated_text %></p>
+        <p><%= f.submit "check translation" %></p>
+    <% end %>
+
+    </section>
 </body>
 </html>
