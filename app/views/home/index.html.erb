@@ -9,7 +9,7 @@
 
   <h1>Edit card</h1>
 
-  <p><%= form_for @random_card do |f| %></p>
+  <p><%= form_for @card do |f| %></p>
         <%= f.hidden_field :original_text %>
         <p>translated text: <%= f.text_field :translated_text %></p>
 

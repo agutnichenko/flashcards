@@ -14,4 +14,12 @@ class Card < ApplicationRecord
       errors.add(:base, I18n.t('uniqueness'))
     end
   end
+
+  def self.get_random
+    # count = Card.count
+    # random_offset = rand(count)
+    # @random_card = Card.offset(random_offset).first
+    @random_card = Card.limit(1).order('RANDOM()')
+  end
+
 end
