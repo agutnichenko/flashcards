@@ -1,36 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Флэшкарточкер</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-</head>
-
-<body>
+<title>Флэшкарточкер</title>
 <section id="container">
-
-  <header class="clearfix">
-    <h1>Флэшкарточкер</h1>
-    <ul class="navigation-links">
-      <%= link_to "Все карточки", cards_path %>
-      <%= link_to "Добавить карточку", new_card_path %>
-      <%= yield %>
-    </ul>
-  </header>
-
-  <section>
-    <p style="font-size: 22px;">
-      Первый в мире удобный менеджер флеш-карточек. Именно так.
-    </p>
-  </section>
+  <h1>Флэшкарточкер</h1>
+  <ul class="navigation-links">
+    <%= link_to "Все карточки", cards_path %>
+    <%= link_to "Добавить карточку", new_card_path %>
+  </ul>
+  <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
 
   <h1>Edit card</h1>
 
-  <p><%= form_for  @random_card do |f| %></p>
+  <p><%= form_for @random_card do |f| %></p>
         <%= f.hidden_field :original_text %>
         <p>translated text: <%= f.text_field :translated_text %></p>
+
         <p><%= f.submit "check translation" %></p>
     <% end %>
-
     </section>
-</body>
-</html>
+
+

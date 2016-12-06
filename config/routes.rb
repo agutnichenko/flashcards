@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'trainers/index'
+
   # get 'new' => 'cards#new'
   # get 'delete' => 'cards#destroy'
   # get 'edit' => 'cards#edit'
