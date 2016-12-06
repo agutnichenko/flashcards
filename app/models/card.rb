@@ -16,10 +16,7 @@ class Card < ApplicationRecord
   end
 
   def self.get_random
-    # count = Card.count
-    # random_offset = rand(count)
-    # @random_card = Card.offset(random_offset).first
-    @random_card = Card.limit(1).order('RANDOM()')
+    @random_card = Card.order('RANDOM()').first
   end
 
 end
