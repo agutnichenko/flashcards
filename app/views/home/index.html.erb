@@ -1,8 +1,7 @@
 <h1>Translate card</h1>
-<p><%= form_tag @card do  %>
-      <%= hidden_field_tag :original_text %>
+<p><%= form_tag @card, :url => {:controller => "home", :action => "index"} do %>
       translated text: <%= text_field_tag :translated_text %>
-    <%= submit_tag "check translation" %>
+      <%= submit_tag "check translation" %>
   <% end %>
 </p>
 
