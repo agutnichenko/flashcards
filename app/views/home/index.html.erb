@@ -1,9 +1,8 @@
 <h1>Translate card</h1>
-<p><%= form_for @card do |f| %>
-      <%= f.hidden_field :original_text %>
-      translated text: <%= f.text_field :translated_text %>
-
-    <%= f.submit "check translation" %>
+<p><%= form_tag @card do  %>
+      <%= hidden_field_tag :original_text %>
+      translated text: <%= text_field_tag :translated_text %>
+    <%= submit_tag "check translation" %>
   <% end %>
 </p>
 

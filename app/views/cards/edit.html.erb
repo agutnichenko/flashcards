@@ -1,6 +1,6 @@
 <h1>Edit card</h1>
-<p><%= form_for @card do |f| %>
-      <%= render partial: "shared/form", locals: {f: f} %>
-      <%= f.submit "Save flashcard" %>
+<p><%= form_tag @card do |f| %>
+      <%= render partial: "shared/form" %>
+      <%= submit_tag "Save flashcard" %>
   <% end %>
 </p>
