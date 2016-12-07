@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-
 <head>
   <title>Флэшкарточкер</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
 </head>
 <body>
-<%= stylesheet_link_tag "application", :media => "all" %>
-<%= yield %>
+<section id="container">
+  <h1>Флэшкарточкер</h1>
+  <ul class="navigation-links">
+    <%= link_to "Все карточки", cards_path %>
+    <%= link_to "Добавить карточку", new_card_path %>
+  </ul>
+  <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+  <%= yield %>
+</section>
 </body>
-
 </html>
 
