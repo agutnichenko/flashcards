@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'trainers/index'
+  #get 'trainers/index'
 
   # get 'new' => 'cards#new'
   # get 'delete' => 'cards#destroy'
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # get 'cards' => 'cards#index'
   # get 'home' => 'home#index'
   root 'home#index'
+  get 'review_card' => 'trainers#index'
   resources :cards
   resources :home
 end
