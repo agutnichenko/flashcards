@@ -4,8 +4,4 @@ class HomeController < ApplicationController
     @card = Card.get_random
   end
 
-  def check_translation
-
-  end
-
 end

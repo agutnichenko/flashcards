@@ -3,9 +3,10 @@
   dutch text: <%= @card.translated_text %>
 </p>
 <p>
-  <%= form_tag review_card_path(@card) do %>
+  <%= form_tag edit_trainer_path(@card) do %>
       your translation: <%= text_field_tag :original_text %>
-      <%= submit_tag "check translation" %>
+      <%= hidden_field_tag :id, @card.id %>
+      <%= submit_tag "check translation"%>
   <% end %>
 </p>
 
