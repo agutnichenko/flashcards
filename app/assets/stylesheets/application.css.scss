@@ -1,5 +1,4 @@
 /*
- *= require_tree .
  *= require_self
  */
 
@@ -36,7 +35,7 @@ input[type=submit] { @extend .btn; @extend .btn-success;}
 
 
 body {
-  background-color: green;
+  background-color: grey;
 }
 
 .clearfix:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;} html[xmlns].clearfix{display:block;} * html .clearfix{height:1%;}

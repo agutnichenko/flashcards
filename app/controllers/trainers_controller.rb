@@ -1,12 +1,8 @@
 class TrainersController < ApplicationController
 
-  before_filter :find_card, only: [:edit, :update]
+  before_filter :find_card, only: [:review]
 
-  def index; end
-
-  def edit; end
-
-  def update
+  def review
     params.permit!
     if @card_translation.translated_text == params[:translated_text]
       redirect_to root_url, notice: 'перевод правильный'
