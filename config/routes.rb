@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get 'cards' => 'cards#index'
   # get 'home' => 'home#index'
   root 'home#index'
-  get 'trainers/review:id', to: 'trainers#review'
+  get 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
   resources :home
 end
