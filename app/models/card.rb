@@ -19,4 +19,6 @@ class Card < ApplicationRecord
     @random_card = Card.order('RANDOM()').first
   end
 
+
+
 end
