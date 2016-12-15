@@ -17,11 +17,11 @@ class Card < ApplicationRecord
   end
 
   def self.get_random
-    #@random_card = Card.order('RANDOM()').first
+   # @random_card = Card.order('RANDOM()').first
     #puts Card.where("review_date <= #{Date.today}").order('RANDOM()').to_sql
 
     #@random_card = Card.where("review_date <= '#{Date.today}'").order('RANDOM()')
-    @random_card = Card.where("'review_date' <= date(now())").order('RANDOM()')
+    @random_card = Card.where("review_date <= ?", Time.current).order('RANDOM()').first
   end
 
 end
