@@ -20,8 +20,8 @@ class Card < ApplicationRecord
     #@random_card = Card.order('RANDOM()').first
     #puts Card.where("review_date <= #{Date.today}").order('RANDOM()').to_sql
 
-    #@random_card = Card.where("review_date <= #{Date.today}").order('RANDOM()')
-    @random_card = Card.where("review_date <= date(now())").order('RANDOM()')
+    #@random_card = Card.where("review_date <= '#{Date.today}'").order('RANDOM()')
+    @random_card = Card.where("'review_date' <= date(now())").order('RANDOM()')
   end
 
 end
