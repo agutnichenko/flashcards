@@ -8,8 +8,7 @@ class TrainersController < ApplicationController
       @card_translation.save
       redirect_to root_url, notice: 'перевод правильный'
     else
-      redirect_to cards_url, notice: 'перевод неправильный'
-      @card_translation.save
+      redirect_to root_url, :notice => 'перевод неправильный'
     end
   end
 
