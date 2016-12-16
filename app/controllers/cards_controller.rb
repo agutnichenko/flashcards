@@ -19,7 +19,7 @@ class CardsController < ApplicationController;
   def edit; end
 
   def create
-    params.permit!
+    params.permit(:original_text, :translated_text)
     @card = Card.create(params[:card])
     if @card.valid?
       redirect_to card_path(@card), notice: 'card is created!'
@@ -29,7 +29,7 @@ class CardsController < ApplicationController;
   end
 
   def update
-    params.permit!
+    params.permit(:original_text, :translated_text)
     @card.update_attributes(params[:card])
     if @card.valid?
       redirect_to card_path(@card)
