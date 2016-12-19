@@ -1,4 +1,5 @@
 class Card < ApplicationRecord
+
   validates :original_text, presence: true
   validates :translated_text, presence: true
   validates :review_date, presence: true
@@ -14,4 +15,9 @@ class Card < ApplicationRecord
       errors.add(:base, I18n.t('uniqueness'))
     end
   end
+
+  def self.get_random
+    Card.where("review_date <= ?", Time.current).order('RANDOM()').first
+  end
+
 end

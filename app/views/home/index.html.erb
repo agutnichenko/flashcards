@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Флэшкарточкер</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-</head>
+<h1>Translate card</h1>
+<% if @card.blank? %>
+    <b>no items in store</b>
+<% else %>
+<p>
+  English translation: <%= @card.translated_text %>
+</p>
 
-<body>
-<section id="container">
+<p>
+  <%= form_tag trainer_path(@card) do %>
+      your translation: <%= text_field_tag :original_text %>
+      <%= submit_tag "check translation"%>
+  <% end %>
+<% end %>
+</p>
 
-  <header class="clearfix">
-    <h1>Флэшкарточкер</h1>
-    <ul class="navigation-links">
-      <%= link_to "Все карточки", cards_path %>
-      <%= link_to "Добавить карточку", new_card_path %>
-      <%= yield %>
-    </ul>
-  </header>
 
-  <section>
-    <p style="font-size: 22px;">
-      Первый в мире удобный менеджер флеш-карточек. Именно так.
-    </p>
-  </section>
-
-</section>
-</body>
-</html>

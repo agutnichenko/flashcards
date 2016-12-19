@@ -1,4 +1,5 @@
 /*
+ *= require_tree .
  *= require_self
  */
 
@@ -7,35 +8,34 @@
 input[type=submit] { @extend .btn; @extend .btn-success;}
 
 #container {
-    margin: 48px auto;
-    width: 960px;
+  margin: 48px auto;
+  width: 960px;
 }
 
 #container > section {
-    clear: both;
+  clear: both;
 }
 
 #container > header {
-    margin-bottom: 46px;
+  margin-bottom: 46px;
 }
 
- #container > header > h1 {
-     float: left;
-     margin: 0;
- }
+#container > header > h1 {
+  float: left;
+  margin: 0;
+}
 
 .navigation-links {
-    float: right;
+  float: right;
 }
 
 .navigation-links li {
-    display: inline-block;
-    margin: 0 16px;
+  display: inline-block;
+  margin: 0 16px;
 }
 
-
 body {
-  background-color: grey;
+  background-color: yellow;
 }
 
 .clearfix:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;} html[xmlns].clearfix{display:block;} * html .clearfix{height:1%;}
