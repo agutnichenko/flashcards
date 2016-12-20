@@ -12,4 +12,13 @@ RSpec.describe CardsController, :type => :controller do
       expect(response).to render_template("index")
     end
   end
+
+  describe "GET #show" do
+    it "renders the show template if item found"
+    card = FactoryGirl.create(:card)
+    get :show, {id: card.id}
+    expect(response).to render_template("show")
+  end
+
 end
+
