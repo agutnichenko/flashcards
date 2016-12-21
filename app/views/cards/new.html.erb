@@ -6,8 +6,5 @@
       <%= render partial: "shared/form", locals: {f: f} %>
       <%= f.submit "Create flashcard", class: 'btn btn-success' %>
   <% end %>
-  <% if flash[:message] %>
-    <div class="notice"><%= flash[:notice] %></div>
-<% end %>
 </p>
 
