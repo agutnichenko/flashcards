@@ -16,6 +16,9 @@
   <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
   <%= yield %>
 </section>
+<% if flash[:message] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 </body>
 </html>
 

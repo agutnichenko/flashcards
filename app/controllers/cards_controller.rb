@@ -21,7 +21,8 @@ class CardsController < ApplicationController;
   def create
     @card = Card.create(card_params)
     if @card.valid?
-      redirect_to card_path(@card), notice: 'card is created!'
+      flash[:message] = "cArd successfully created"
+      redirect_to card_path(@card)#, notice: 'card is created!'
     else
       render 'new'
     end
