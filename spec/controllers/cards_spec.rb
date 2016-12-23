@@ -18,7 +18,7 @@ RSpec.describe CardsController, :type => :controller do
 
     it "renders the show template if item found" do
       card = FactoryGirl.create(:card)
-      get :show, {id: card.id}
+      get :show, params: {id: card.id}
       expect(response).to render_template("show")
     end
   end
@@ -26,17 +26,17 @@ RSpec.describe CardsController, :type => :controller do
   describe "POST #create" do
 
     it "redirects to newly created item" do
-      post :create, card: {original_text: 'as', translated_text: 'qw'}
+      post :create, params: {card: {original_text: 'as', translated_text: 'qw'}}
       expect(response).to redirect_to(card_path(assigns(:card)))
     end
 
     it "renders new view in case if translated_text field is empty" do
-      post :create, card: {original_text: 'as', translated_text: nil}
+      post :create, params: {card: {original_text: 'as', translated_text: nil}}
       expect(response).to render_template("new")
     end
 
     it "renders new view in case if original_text field is empty" do
-      post :create, card: {translated_text: 'asy', original_text: nil}
+      post :create, params: {card: {translated_text: 'asy', original_text: nil}}
       expect(response).to render_template("new")
     end
 
@@ -46,13 +46,13 @@ RSpec.describe CardsController, :type => :controller do
 
     it "redirects to newly updated item" do
       card = FactoryGirl.create(:card)
-      put :update, id: card.id, card: {original_text: 'as'}
+      put :update, params: {id: card.id, card: {original_text: 'as'}}
       expect(response).to redirect_to(card_path(assigns(:card)))
     end
 
     it "renders update view in case if update failed" do
       card = FactoryGirl.create(:card)
-      put :update, id: card.id, card: {original_text: nil}
+      put :update, params: {id: card.id, card: {original_text: nil}}
       expect(response).to render_template("edit")
     end
   end
@@ -61,7 +61,7 @@ RSpec.describe CardsController, :type => :controller do
 
     it "renders all cards url in case if card is destroyed" do
       card = FactoryGirl.create(:card)
-      delete :destroy, id: card.id
+      delete :destroy, params: {id: card.id}
       expect(response).to redirect_to(cards_url)
     end
   end
