@@ -40,6 +40,11 @@ RSpec.describe CardsController, :type => :controller do
       expect(response).to render_template("new")
     end
 
+    # it "new record?" do
+    #   card = Card.new(original_text: "f", translated_text: "ew")
+    #   expect(response).to render_template("new")
+    # end
+
   end
 
   describe "PUT #update" do

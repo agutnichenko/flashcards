@@ -16,5 +16,10 @@ RSpec.describe Card, :type => :model do
     expect(card.id).not_to be NIL
   end
 
+  it "check random method" do
+    card = FactoryGirl.create(:card)
+    expect(card.id).not_to be NIL
+  end
+
 end
 

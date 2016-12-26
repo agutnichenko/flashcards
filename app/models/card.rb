@@ -21,4 +21,17 @@ class Card < ApplicationRecord
     Card.where("review_date <= ?", Time.current).order('RANDOM()').first
   end
 
+  # def check_for_equality
+  #   unless Card.include?(self)
+  #     errors.add(:base, "card is already existing")
+  #   end
+  # end
+
+  # def check_for_equality
+  #   @cards = Card.all
+  #   unless self(params[:original_text]) == Card.find(original_text)
+  #     errors.add(:base, "card is already existing")
+  #   end
+  # end
+
 end
