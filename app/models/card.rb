@@ -4,7 +4,6 @@ class Card < ApplicationRecord
   validates :translated_text, presence: true
   validates :review_date, presence: true
   validate :check_uniqueness
-  validates_uniqueness_of :id
   before_validation :is_automatically_set
 
   def is_automatically_set
