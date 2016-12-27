@@ -25,6 +25,6 @@ RSpec.describe Card, :type => :model do
     expect(FactoryGirl.create(:card, original_text: 'hello')).to be_persisted
     card = FactoryGirl.build(:card, original_text: 'hello')
     card.valid?
-    expect(card.errors[:original_text]).to eq(['has already been taken'])
+    expect(card.errors[:original_text]).not_to be_empty
   end
 end

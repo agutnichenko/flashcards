@@ -3,6 +3,7 @@ class Card < ApplicationRecord
   validates :original_text, presence: true
   validates :translated_text, presence: true
   validates :review_date, presence: true
+  validates :original_text, uniqueness: true
   validate :check_uniqueness
   before_validation :is_automatically_set
 
@@ -19,18 +20,5 @@ class Card < ApplicationRecord
   def self.get_random
     Card.where("review_date <= ?", Time.current).order('RANDOM()').first
   end
-
-  # def check_for_equality
-  #   unless Card.include?(self)
-  #     errors.add(:base, "card is already existing")
-  #   end
-  # end
-
-  # def check_for_equality
-  #   @cards = Card.all
-  #   unless self(params[:original_text]) == Card.find(original_text)
-  #     errors.add(:base, "card is already existing")
-  #   end
-  # end
 
 end
