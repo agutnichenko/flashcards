@@ -27,6 +27,4 @@ RSpec.describe Card, :type => :model do
     card.valid?
     expect(card.errors[:original_text]).to eq(['has already been taken'])
   end
-
 end
-
