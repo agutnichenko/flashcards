@@ -21,5 +21,12 @@ RSpec.describe Card, :type => :model do
     expect(card.id).not_to be NIL
   end
 
+  it 'should not create duplicate card' do
+    expect(FactoryGirl.create(:card, original_text: 'hello')).to be_persisted
+    card = FactoryGirl.build(:card, original_text: 'hello')
+    card.valid?
+    expect(card.errors[:original_text]).to eq(['has already been taken'])
+  end
+
 end
 
