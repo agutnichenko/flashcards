@@ -13,34 +13,29 @@ RSpec.describe Card, :type => :model do
 
   it "check random method" do
     card = FactoryGirl.create(:card)
-    expect(card.id).not_to be NIL
-  end
-
-  it "check random method" do
-    card = FactoryGirl.create(:card)
-    expect(card.id).not_to be NIL
+    expect(card.id).should_not be_nil
   end
 
   it 'should not create duplicate card' do
     expect(FactoryGirl.create(:card, original_text: 'hello')).to be_persisted
     card = FactoryGirl.build(:card, original_text: 'hello')
     card.valid?
-    expect(card.errors[:original_text]).to include 'Original text has already been taken'
+    expect(card.errors[:original_text]).to include 'has already been taken'
   end
 
   it "original_text presence" do
     card = Card.new(original_text: '', translated_text: 'asdfg')
-    expect(card.errors[:original_text]).not_to be(NIL)
+    expect(card.errors[:original_text]).should_not be_nil
   end
 
   it "translated_text presence" do
     card = Card.new(original_text: 'blablabvcnc', translated_text: '')
-    expect(card.errors[:translated_text]).not_to be(NIL)
+    expect(card.errors[:translated_text]).should_not be_nil
   end
 
   it "translated_text presence" do
     card = Card.new(original_text: 'blablabvcnc', translated_text: '')
-    expect(card.errors[:translated_text]).not_to be(NIL)
+    expect(card.errors[:translated_text]).should_not be_nil
   end
 
 end
