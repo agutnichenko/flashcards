@@ -1,6 +1,8 @@
 language: ruby
 rvm: 2.2.5
 env: RAILS_ENV=test
+services:
+  - postgresql
 script:
   - bundle exec rspec
 addons:
