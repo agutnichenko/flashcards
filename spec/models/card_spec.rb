@@ -25,6 +25,22 @@ RSpec.describe Card, :type => :model do
     expect(FactoryGirl.create(:card, original_text: 'hello')).to be_persisted
     card = FactoryGirl.build(:card, original_text: 'hello')
     card.valid?
-    expect(card.errors[:original_text]).not_to be_empty
+    expect(card.errors[:original_text]).to include 'Original text has already been taken'
   end
+
+  it "original_text presence" do
+    card = Card.new(original_text: '', translated_text: 'asdfg')
+    expect(card.errors[:original_text]).not_to be(NIL)
+  end
+
+  it "translated_text presence" do
+    card = Card.new(original_text: 'blablabvcnc', translated_text: '')
+    expect(card.errors[:translated_text]).not_to be(NIL)
+  end
+
+  it "translated_text presence" do
+    card = Card.new(original_text: 'blablabvcnc', translated_text: '')
+    expect(card.errors[:translated_text]).not_to be(NIL)
+  end
+
 end
