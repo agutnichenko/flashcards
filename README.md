@@ -1,3 +1,5 @@
+https://travis-ci.org/agutnichenko/flashcards.svg?branch=feature%2Ftravis
+
 ![alt tag](http://saveimg.ru/pictures/13-11-16/6f2cc9cbbde54aa216cc745eb3df6d42.png)
 
 # Project FLASHCARDS
