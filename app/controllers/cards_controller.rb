@@ -1,6 +1,6 @@
 class CardsController < ApplicationController;
 
-  before_filter :find_card, only: [:show, :edit, :update, :destroy]
+  before_action :find_card, only: [:show, :edit, :update, :destroy]
 
   def index
     @cards = Card.all
@@ -20,7 +20,7 @@ class CardsController < ApplicationController;
 
   def create
     @card = Card.create(card_params)
-    if @card.valid?
+    if  @card.valid?
       flash[:message] = "cArd successfully created"
       redirect_to card_path(@card)#, notice: 'card is created!'
     else

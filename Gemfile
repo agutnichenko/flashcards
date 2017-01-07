@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'nokogiri', '1.6.8.1'
-ruby '>=2.2.5'
+ruby '2.2.5'
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
   gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 group :development do

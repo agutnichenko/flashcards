@@ -21,4 +21,5 @@
 
 en:
   uniqueness: "translated text should not be equal to original one"
+  existing_card: "has already been taken"
 

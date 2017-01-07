@@ -3,6 +3,7 @@ class Card < ApplicationRecord
   validates :original_text, presence: true
   validates :translated_text, presence: true
   validates :review_date, presence: true
+  validates :original_text, uniqueness: true
   validate :check_uniqueness
   before_validation :is_automatically_set
 
