@@ -17,7 +17,7 @@ RSpec.describe CardsController, :type => :controller do
   describe 'GET #show' do
 
     it 'renders the show template if item found' do
-      #user = FactoryGirl.create(:user)
+      # user = FactoryGirl.create(:user)
       card = FactoryGirl.create(:card)
       get :show, params: { id: card.id }
       expect(response).to render_template('show')
