@@ -17,7 +17,6 @@ RSpec.describe CardsController, :type => :controller do
   describe 'GET #show' do
 
     it 'renders the show template if item found' do
-      # user = FactoryGirl.create(:user)
       card = FactoryGirl.create(:card)
       get :show, params: { id: card.id }
       expect(response).to render_template('show')
@@ -27,7 +26,8 @@ RSpec.describe CardsController, :type => :controller do
   describe 'POST #create' do
 
     it 'redirects to newly created item' do
-      post :create, params: { card: { original_text: 'as', translated_text: 'qw' } }
+       user = FactoryGirl.create(:user)
+      post :create, params: { card: { original_text: 'as', translated_text: 'qw' }, user.user_id }
       expect(response).to redirect_to(card_path(assigns(:card)))
     end
 
