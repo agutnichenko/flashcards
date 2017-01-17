@@ -21,7 +21,7 @@ class CardsController < ApplicationController;
   def create
     @card = Card.create(card_params)
     if  @card.valid?
-      flash[:message] = "cArd successfully created"
+      flash[:message] = 'cArd successfully created'
       redirect_to card_path(@card)#, notice: 'card is created!'
     else
       render 'new'
@@ -50,7 +50,7 @@ class CardsController < ApplicationController;
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text)
+    params.require(:card).permit(:original_text, :translated_text, :user_id)
   end
 
 end

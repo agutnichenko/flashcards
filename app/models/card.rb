@@ -1,5 +1,7 @@
 class Card < ApplicationRecord
 
+  belongs_to :user
+
   validates :original_text, presence: true
   validates :translated_text, presence: true
   validates :review_date, presence: true
