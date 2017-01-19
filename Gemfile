@@ -49,5 +49,7 @@ group :development do
   gem 'rubocop', '~> 0.45.0', require: false
 end
 
+gem 'sorcery'
+
 
 
