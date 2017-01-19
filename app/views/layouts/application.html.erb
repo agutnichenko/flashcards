@@ -14,6 +14,19 @@
     <%= link_to "Добавить карточку", new_card_path %>
   </ul>
   <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+  <div id="nav">
+    <% if current_user %>
+        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+        <%= link_to "Logout", :logout, method: :post %>
+    <% else %>
+        <%= link_to "Register", new_user_path %> |
+        <%= link_to "Login", :login %>
+    <% end %>
+  </div>
+  <div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
   <%= yield %>
 </section>
 <% if flash[:message] %>
