@@ -16,9 +16,6 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    if @user.save
-      redirect_to(:users, notice: 'User was successfully created')
-    end
   end
 
   # GET /users/1/edit
