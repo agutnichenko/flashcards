@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'user_sessions/new'
+  get 'sessions/new'
 
-  get 'user_sessions/create'
+  get 'sessions/create'
 
-  get 'user_sessions/destroy'
+  get 'sessions/destroy'
 
   resources :users
   root 'home#index'
@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   resources :home
 
   root :to => 'users#index'
-  resources :user_sessions
+  #resources :SessionsController
   resources :users
 
-  get 'login' => 'user_sessions#new', :as => :login
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'login' => 'sessions#new', :as => :login
+  post 'logout' => 'sessions#destroy', :as => :logout
 end
