@@ -9,10 +9,7 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
-
-  get 'users/edit'
-  get 'users/update'
-  # resources :users
+  resources :users
   root 'home#index'
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
