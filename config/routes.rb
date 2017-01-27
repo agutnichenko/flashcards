@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'registration/new'
+  get 'registrations/new'
 
-  get 'registration/create'
+  get 'registrations/create'
 
   get 'sessions/new'
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :home
 
   root :to => 'users#index'
-  root :to => 'registration#index'
+  root :to => 'registrations#index'
   #resources :SessionsController
 
   get 'login' => 'sessions#new', :as => :login
