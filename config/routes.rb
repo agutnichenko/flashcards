@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
   resources :home
+  resources :sessions
+  resources :registrations
 
   root :to => 'users#index'
   root :to => 'registrations#index'
