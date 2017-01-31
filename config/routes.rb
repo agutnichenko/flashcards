@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :cards
   resources :home
   resources :sessions
-  resources :registrations
+  resources :registrations, only: [:new, :create]
 
   root :to => 'users#index'
   root :to => 'registrations#index'
