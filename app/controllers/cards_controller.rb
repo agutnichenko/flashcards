@@ -13,7 +13,7 @@ class CardsController < ApplicationController;
   end
 
   def new
-    @card = Card.new
+    @card = current_user.cards.new
   end
 
   def edit; end
@@ -50,7 +50,7 @@ class CardsController < ApplicationController;
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :user_id)
+    params.require(:card).permit(:original_text, :translated_text, :current_user)
   end
 
 end
