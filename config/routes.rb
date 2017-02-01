@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   #resources :SessionsController
 
   get 'login' => 'sessions#new', :as => :login
-  post 'logout' => 'sessions#destroy', :as => :logout
+  get 'logout' => 'sessions#destroy', :as => :logout
 end
