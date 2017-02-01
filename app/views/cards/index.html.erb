@@ -1,4 +1,6 @@
 <h1>Cards</h1>
+<h3>My profile</h3>
+<%= link_to "Edit", edit_user_path(current_user) %> |
 <% if @cards.empty? %>
     <b>no items in store</b>
 <% else %>
