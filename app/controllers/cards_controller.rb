@@ -19,7 +19,7 @@ class CardsController < ApplicationController;
   def edit; end
 
   def create
-    @card = Card.create(card_params)
+    @card = current_user.cards.create(card_params)
     if  @card.valid?
       flash[:message] = 'cArd successfully created'
       redirect_to card_path(@card)#, notice: 'card is created!'
@@ -46,11 +46,11 @@ class CardsController < ApplicationController;
   private
 
   def find_card
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :current_user)
+    params.require(:card).permit(:original_text, :translated_text)
   end
 
 end
