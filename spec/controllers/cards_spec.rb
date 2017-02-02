@@ -5,7 +5,9 @@ RSpec.describe CardsController, :type => :controller do
 
     it 'responds successfully with an HTTP 200 status code' do
       get :index
-      sign_in FactoryGirl.create(:user)
+      @user = FactoryGirl.create(:user)
+      login_user(@user)
+      # login_user(FactoryGirl::create(:user))
       expect(response).to have_http_status(200)
     end
 
