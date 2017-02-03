@@ -4,13 +4,8 @@ RSpec.describe CardsController, :type => :controller do
   describe 'GET #index' do
 
     it 'responds successfully with an HTTP 200 status code' do
-      get :index
       @user = FactoryGirl.create(:user)
       login_user(@user)
-      expect(response).to render_template('cards')
-    end
-
-    it 'renders the index template' do
       get :index
       expect(response).to render_template('index')
     end
@@ -20,6 +15,8 @@ RSpec.describe CardsController, :type => :controller do
 
     it 'renders the show template if item found' do
       card = FactoryGirl.create(:card)
+      @user = FactoryGirl.create(:user)
+      login_user(@user)
       get :show, params: {id: card.id}
       expect(response).to render_template('show')
     end
@@ -36,6 +33,9 @@ RSpec.describe CardsController, :type => :controller do
     end
 
     it 'renders new view in case if translated_text field is empty' do
+      @user = FactoryGirl.create(:user)
+      login_user(@user)
+      get :new
       post :create, params: {card: {original_text: 'as', translated_text: nil}}
       expect(response).to render_template('new')
     end
