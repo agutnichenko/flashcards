@@ -7,8 +7,7 @@ RSpec.describe CardsController, :type => :controller do
       get :index
       @user = FactoryGirl.create(:user)
       login_user(@user)
-      # login_user(FactoryGirl::create(:user))
-      expect(response).to have_http_status(200)
+      expect(response).to render_template('cards')
     end
 
     it 'renders the index template' do
