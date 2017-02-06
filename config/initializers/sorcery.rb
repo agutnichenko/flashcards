@@ -2,10 +2,27 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:external]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
+  config.external_providers = [:twitter, :facebook]
+
+#add this file to .gitignore BEFORE putting any secret keys in here, or use a system like Figaro to abstract it!!!
+
+  config.twitter.key = "<your key here>"
+  config.twitter.secret = "<your key here>"
+  config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
+  config.twitter.user_info_mapping = {:username => "screen_name"}
+
+  config.facebook.key = "<your key here>"
+  config.facebook.secret = "<your key here>"
+  config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
+  config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username", :hometown => "hometown/name"} #etc
+  config.facebook.scope = "email,offline_access,user_hometown,user_interests,user_likes" #etc
+  config.facebook.display = "popup"
+
+
   # -- core --
   # What controller action to call for non-authenticated users. You can also
   # override the 'not_authenticated' method of course.

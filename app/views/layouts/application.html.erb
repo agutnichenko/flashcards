@@ -32,6 +32,9 @@
 <% if flash[:message] %>
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
+
+<%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %> |
+<%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
 </body>
 </html>
 
