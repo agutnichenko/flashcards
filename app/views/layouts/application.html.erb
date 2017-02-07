@@ -11,13 +11,13 @@
     <% unless params[:controller] == 'cards' && params[:action] == 'index' %>
         <%= link_to 'All cards', cards_path %>
     <% end %>
-    <%= link_to "Добавить карточку", new_card_path %>
+    <%= link_to "Add card", new_card_path %>
   </ul>
   <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
   <div id="nav">
     <% if current_user %>
 
-        <%= link_to "Logout", :logout, method: :post %>
+        <%= link_to "Logout", :login, method: :post %>
     <% else %>
         <%= link_to "Register", new_registration_path %> |
         <%= link_to "Login", :login %>

@@ -21,7 +21,7 @@ RSpec.describe SessionsController, type: :controller do
       user = FactoryGirl.create(:user)
       login_user(user)
       delete :destroy
-      expect(response).to redirect_to('login')
+      expect(response).to redirect_to('/login')
     end
   end
 

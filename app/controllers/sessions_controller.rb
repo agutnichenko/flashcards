@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:cards, notice: 'Logged out!')
+    redirect_to login_path
   end
 end
