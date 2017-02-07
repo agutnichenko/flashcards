@@ -38,7 +38,7 @@ class CardsController < ApplicationController;
   end
 
   def destroy
-    @card = Card.find(params[:id])
+    card = current_user.cards.find(params[:id])
     @card.destroy
     redirect_to cards_url
   end

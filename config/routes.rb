@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   get 'registrations/create'
 
-  get 'sessions/new'
 
   get 'sessions/create'
 
