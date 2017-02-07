@@ -18,8 +18,10 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "GET #destroy" do
     it "returns http success" do
+      user = FactoryGirl.create(:user)
+      login_user(user)
       get :destroy
-      expect(response).to have_http_status(:success)
+      expect(response).to render_template('login')
     end
   end
 
