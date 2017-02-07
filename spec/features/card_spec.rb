@@ -13,7 +13,7 @@ RSpec.describe CardsController, :type => :feature do
       fill_in 'Email', with: 'blwvhwbvlwfdfdfdhmhmhntgbvwjbvwkejbv@i.ua'
       fill_in 'Password', with: '123456'
       click_button 'Login'
-      click_button 'Add card'
+      click_link 'Add card'
       fill_in 'original word', with: 'qwerty'
       fill_in 'translated word', with: 'qwerty'
       click_button 'Create flashcard'
