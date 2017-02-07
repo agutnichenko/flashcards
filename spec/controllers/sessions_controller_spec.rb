@@ -20,8 +20,8 @@ RSpec.describe SessionsController, type: :controller do
     it "returns http success" do
       user = FactoryGirl.create(:user)
       login_user(user)
-      get :destroy
-      expect(response).to render_template('login')
+      delete :destroy
+      expect(response).to redirect_to('login')
     end
   end
 

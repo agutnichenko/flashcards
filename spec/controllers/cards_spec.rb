@@ -15,7 +15,9 @@ RSpec.describe CardsController, :type => :controller do
 
     it 'renders the show template if item found' do
       user = FactoryGirl.create(:user)
-      card = FactoryGirl.create(:card)
+      card = FactoryGirl.create(:card, user: user)
+      puts "user_id#{user.id}"
+      puts card.id
       login_user(user)
       get :show, params: {id: card.id}
       expect(response).to render_template('show')
@@ -52,7 +54,7 @@ RSpec.describe CardsController, :type => :controller do
 
     it 'redirects to newly updated item' do
       user = FactoryGirl.create(:user)
-      card = FactoryGirl.create(:card)
+      card = FactoryGirl.create(:card, user: user)
       login_user(user)
       put :update, params: {id: card.id, card: {original_text: 'as'}}
       expect(response).to redirect_to(card_path(assigns(:card)))
@@ -60,7 +62,7 @@ RSpec.describe CardsController, :type => :controller do
 
     it 'renders update view in case if update failed' do
       user = FactoryGirl.create(:user)
-      card = FactoryGirl.create(:card)
+      card = FactoryGirl.create(:card, user: user)
       login_user(user)
       put :update, params: {id: card.id, card: {original_text: nil}}
       expect(response).to render_template('edit')
@@ -71,7 +73,7 @@ RSpec.describe CardsController, :type => :controller do
 
     it 'renders all cards url in case if card is destroyed' do
       user = FactoryGirl.create(:user)
-      card = FactoryGirl.create(:card)
+      card = FactoryGirl.create(:card, user: user)
       login_user(user)
       delete :destroy, params: {id: card.id}
       expect(response).to redirect_to(cards_url)
