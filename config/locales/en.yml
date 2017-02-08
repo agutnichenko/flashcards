@@ -20,6 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  uniqueness: "translated text should not be equal to original one"
-  existing_card: "has already been taken"
+  uniqueness: 'translated text should not be equal to original one'
+  existing_card: 'has already been taken'
 

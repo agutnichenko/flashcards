@@ -16,7 +16,7 @@ RSpec.describe CardsController, :type => :controller do
     it 'renders the show template if item found' do
       user = FactoryGirl.create(:user)
       card = FactoryGirl.create(:card, user: user)
-      puts "user_id#{user.id}"
+      puts 'user_id#{user.id}'
       puts card.id
       login_user(user)
       get :show, params: {id: card.id}

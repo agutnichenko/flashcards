@@ -2,9 +2,9 @@
 require 'rails_helper'
 
 RSpec.describe CardsController, :type => :feature do
-  describe "card controller methods" do
+  describe 'card controller methods' do
 
-    it "check_uniqueness" do
+    it 'check_uniqueness' do
       visit registrations_new_path
       fill_in 'Email', with: 'blwvhwbvlwfdfdfdhmhmhntgbvwjbvwkejbv@i.ua'
       fill_in 'Password', with: '123456'
