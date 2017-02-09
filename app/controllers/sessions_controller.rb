@@ -8,8 +8,7 @@ class SessionsController < ApplicationController
     if @user = login(params[:email], params[:password])
       redirect_back_or_to(:cards, notice: 'Login successful')
     else
-      flash.now[:alert] = 'Login failed'
-      render action: 'new'
+      render action: 'new', notice: 'Login failed'
     end
   end
 

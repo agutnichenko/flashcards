@@ -13,9 +13,4 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-
-  def user_params
-    params.require(:user).permit(email, :password, :password_confirmation, :authentications_attributes)
-  end
-
 end

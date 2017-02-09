@@ -4,6 +4,7 @@ class CardsController < ApplicationController;
 
   def index
     @cards = current_user.cards
+    @card = current_user.cards.get_random
   end
 
   def show
@@ -21,8 +22,7 @@ class CardsController < ApplicationController;
   def create
     @card = current_user.cards.create(card_params)
     if  @card.valid?
-      flash[:message] = 'cArd successfully created'
-      redirect_to card_path(@card)#, notice: 'card is created!'
+      redirect_to card_path(@card), notice: 'card is created!'
     else
       render 'new'
     end
@@ -38,7 +38,6 @@ class CardsController < ApplicationController;
   end
 
   def destroy
-    card = current_user.cards.find(params[:id])
     @card.destroy
     redirect_to cards_url
   end

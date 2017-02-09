@@ -1,15 +1,6 @@
 Rails.application.routes.draw do
   get 'oauths/oauth'
-
   get 'oauths/callback'
-
-  get 'registrations/new'
-
-  get 'registrations/create'
-
-
-  get 'sessions/create'
-
 
   resources :users
   root 'home#index'
@@ -24,10 +15,7 @@ Rails.application.routes.draw do
   #resources :SessionsController
 
   get 'login' => 'sessions#new', :as => :login
-  #get 'logout' => 'sessions#destroy', :as => :logout
-
   delete 'logout' => 'sessions#destroy'
-
 
   post "oauth/callback" => "oauths#callback"
   get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
