@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   root :to => 'users#index'
   root :to => 'registrations#index'
-  #resources :SessionsController
 
   get 'login' => 'sessions#new', :as => :login
   delete 'logout' => 'sessions#destroy'
