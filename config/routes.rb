@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
   #resources :home
-  #resources :sessions, only: [:create]
-  post 'login' => 'sessions#create'
+  resources :sessions, only: [:create]
+  #post 'login' => 'sessions#create'
   resources :registrations, only: [:new, :create]
 
   root :to => 'users#index'
