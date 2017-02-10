@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'oauths/callback'
 
   resources :users
-  root 'home#index'
+  #root 'home#index'
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
   #resources :home
