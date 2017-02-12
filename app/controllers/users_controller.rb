@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   #skip_before_action :require_login, only: [:index, :new, :create]
 
+  def show
+    @user = current_user
+  end
   # GET /users/1/edit
   def edit
   end
