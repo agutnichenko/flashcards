@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'oauths/callback'
 
   resource :users, only: [:edit, :update, :show]
-  #root 'home#index'
+  root 'home#index'
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
   #resources :home
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #post 'login' => 'sessions#create'
   resources :registrations, only: [:new, :create]
 
-  root :to => 'users#index'
+  #root :to => 'users#index'
   root :to => 'registrations#index'
 
   get 'login' => 'sessions#new', :as => :login
