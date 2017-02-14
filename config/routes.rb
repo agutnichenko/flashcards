@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'oauths/oauth'
   get 'oauths/callback'
 
-  resource :users, only: [:edit, :update, :show]
+  resources :user, only: [:edit, :update, :show]
   #root 'home#index'
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards

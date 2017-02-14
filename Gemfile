@@ -50,6 +50,9 @@ group :development do
 end
 
 gem 'sorcery'
-
+gem 'pry-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'simple_form'
 
 
