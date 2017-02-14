@@ -2,13 +2,9 @@ Rails.application.routes.draw do
   get 'oauths/oauth'
   get 'oauths/callback'
 
-<<<<<<< HEAD
-  resources :user, only: [:edit, :update, :show]
-  #root 'home#index'
-=======
   resource :users, only: [:edit, :update, :show]
   root 'home#index'
->>>>>>> f6a0d57491fb36289153f885b646a38ae42c17ba
+
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
   #resources :home
