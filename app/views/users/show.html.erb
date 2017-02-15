@@ -5,5 +5,5 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_user_path %> |
+<%= link_to 'Edit', @user, as: :user, url: user_path, method: :patch, html: { class: 'edit_user'} %> |
 <%= link_to 'Back', users_path %>
