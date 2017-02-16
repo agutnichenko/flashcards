@@ -5,10 +5,11 @@ RSpec.describe UsersController, :type => :feature do
   describe 'user controller methods' do
 
     it 'check that user can not update profile with too short password' do
-      visit root_path
-      fill_in 'Email', with: 'quo_vadis@i.ua'
+      visit new_registration_path
+      fill_in 'Email', with: 'blwvhwfdfdfdhmhmhntwkejbv@i.ua'
       fill_in 'Password', with: '123456'
-      click_button 'Login'
+      fill_in 'Password confirmation', with: '123456'
+      click_button 'Create User'
       click_link 'Edit'
       fill_in 'Password', with: '12'
       fill_in 'Password confirmation', with: '12'

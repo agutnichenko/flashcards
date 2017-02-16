@@ -5,8 +5,13 @@ RSpec.describe SessionsController, :type => :feature do
   describe 'session controller methods' do
 
     it 'check that user can login with valid credentials' do
-      visit root_path
-      fill_in 'Email', with: 'quo_vadis@i.ua'
+      visit new_registration_path
+      fill_in 'Email', with: 'blwvhwfdfdfdhmhmhntwkejbv@i.ua'
+      fill_in 'Password', with: '123456'
+      fill_in 'Password confirmation', with: '123456'
+      click_button 'Create User'
+      click_link 'Logout'
+      fill_in 'Email', with: 'blwvhwfdfdfdhmhmhntwkejbv@i.ua'
       fill_in 'Password', with: '123456'
       click_button 'Login'
       expect(page).to have_content 'Login successful'
