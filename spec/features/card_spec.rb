@@ -6,7 +6,7 @@ RSpec.describe CardsController, :type => :feature do
 
     it 'check_uniqueness' do
       visit registrations_new_path
-      fill_in 'Email', with: 'blwvhwbvlwfdfdfdhmhmhntgbvwjbvwkejbv@i.ua'
+      fill_in 'Email', with: 'blwvhwbvlwfdfdfdhmhmhntwkejbv@i.ua'
       fill_in 'Password', with: '123456'
       fill_in 'Password confirmation', with: '123456'
       click_button 'Create User'
