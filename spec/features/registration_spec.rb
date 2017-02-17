@@ -23,6 +23,5 @@ RSpec.describe RegistrationsController, :type => :feature do
       click_button 'Create User'
       expect(page).to have_content 'Password confirmation doesn\'t match Password'
     end
-
   end
 end

@@ -29,3 +29,4 @@ Gemfile.lock
 _helper.rb
 .idea/**
 config/database.yml
+coverage
