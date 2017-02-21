@@ -1,4 +1,5 @@
 class TrainersController < ApplicationController
+  skip_before_action :require_login
 
   def review
     @card_translation = Card.find(params[:id])

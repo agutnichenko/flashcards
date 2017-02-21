@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <head>
   <title>Флэшкарточкер</title>
-  <%= stylesheet_link_tag "application", :media => "all" %>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+
   <%= yield :head %>
 </head>
 <body>
-<section id="container">
+<section id='container'>
   <h1>Флэшкарточкер</h1>
-  <ul class="navigation-links">
+  <ul class='navigation-links'>
     <% unless params[:controller] == 'cards' && params[:action] == 'index' %>
         <%= link_to 'All cards', cards_path %>
     <% end %>
-    <%= link_to "Добавить карточку", new_card_path %>
+    <%= link_to 'Add card', new_card_path %>
   </ul>
   <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+  <div id='nav'>
+    <% if current_user %>
+
+        <%= link_to 'Logout', :logout, method: :delete %>
+    <% else %>
+        <%= link_to 'Register', new_registration_path %> |
+        <%= link_to 'Login', :login %>
+    <% end %>
+  </div>
+  <div>
+    <p id='notice'><%= flash[:notice] %></p>
+    <p id='alert'><%= flash[:alert] %></p>
+  </div>
   <%= yield %>
 </section>
 <% if flash[:message] %>
-    <div class="notice"><%= flash[:notice] %></div>
+    <div class='notice'><%= flash[:notice] %></div>
 <% end %>
+
+<%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %> |
+<%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
 </body>
 </html>
 

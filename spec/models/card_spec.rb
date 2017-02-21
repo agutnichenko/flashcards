@@ -37,4 +37,6 @@ RSpec.describe Card, :type => :model do
     card = Card.new(original_text: 'blablabvcnc', translated_text: '')
     expect(card.errors[:translated_text]).not_to be_nil
   end
+
+  it { should belong_to :user }
 end

@@ -1,7 +1,1 @@
-class HomeController < ApplicationController
-
-  def index
-    @card = Card.get_random
-  end
-
-end
+class HomeController < ApplicationController; end

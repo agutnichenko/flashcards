@@ -49,5 +49,11 @@ group :development do
   gem 'rubocop', '~> 0.45.0', require: false
 end
 
+gem 'sorcery'
+gem 'pry-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'shoulda'
+gem 'simplecov', :require => false, :group => :test
 
 

@@ -3,7 +3,8 @@ class CardsController < ApplicationController;
   before_action :find_card, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cards = Card.all
+    @cards = current_user.cards
+    @card = current_user.cards.get_random
   end
 
   def show
@@ -13,16 +14,15 @@ class CardsController < ApplicationController;
   end
 
   def new
-    @card = Card.new
+    @card = current_user.cards.new
   end
 
   def edit; end
 
   def create
-    @card = Card.create(card_params)
+    @card = current_user.cards.create(card_params)
     if  @card.valid?
-      flash[:message] = 'cArd successfully created'
-      redirect_to card_path(@card)#, notice: 'card is created!'
+      redirect_to card_path(@card), notice: 'card is created!'
     else
       render 'new'
     end
@@ -38,7 +38,6 @@ class CardsController < ApplicationController;
   end
 
   def destroy
-    @card = Card.find(params[:id])
     @card.destroy
     redirect_to cards_url
   end
@@ -46,11 +45,11 @@ class CardsController < ApplicationController;
   private
 
   def find_card
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :user_id)
+    params.require(:card).permit(:original_text, :translated_text)
   end
 
 end
