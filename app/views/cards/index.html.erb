@@ -14,7 +14,6 @@
 
       <% @cards.each do |card| %>
           <tr>
-            <td><%= link_to card.id, card_path(card) %></td>
             <td><%= card.original_text %></td>
             <td><%= card.translated_text %></td>
             <td><%= card.review_date %></td>
@@ -38,6 +37,7 @@
           <%= submit_tag 'check translation' %>
       <% end %>
 <% end %>
+
 </p>
 
 

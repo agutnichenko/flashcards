@@ -1,6 +1,14 @@
 <h1>Edit card</h1>
-<p><%= form_for @card do |f| %>
+<p><%= form_for @card, html: { multipart: true } do |f| %>
       <%= render partial: 'form', locals: {f: f} %>
+        <%= form_for @card do |f| %>
+          <p>
+            <label>My Avatar</label>
+            <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
+            <%= f.file_field :avatar %>
+            <%= f.hidden_field :avatar_cache %>
+          </p>
+          <% end %>
       <%= f.submit "Save changes", class: 'btn btn-success' %>
   <% end %>
 </p>
