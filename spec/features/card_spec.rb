@@ -26,6 +26,5 @@ RSpec.describe CardsController, :type => :feature do
       click_link 'Add card'
       expect(page).to have_xpath '//*[@id="card_avatar"]'
     end
-
   end
 end
