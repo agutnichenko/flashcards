@@ -13,11 +13,11 @@ RSpec.describe CardsController, :type => :feature do
       click_link 'Add card'
       fill_in 'original word', with: 'qwerty'
       fill_in 'translated word', with: 'qwerty'
-      click_button 'Create flashcard'
+      click_button 'Create Card'
       expect(page).to have_current_path(cards_path)
     end
 
-    it 'check_uniqueness' do
+    it 'check_xpath' do
       visit new_registration_path
       fill_in 'Email', with: 'blwvhwfdfdfdhmhmhntwkejbv@i.ua'
       fill_in 'Password', with: '123456'
