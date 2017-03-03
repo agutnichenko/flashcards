@@ -30,3 +30,4 @@ _helper.rb
 .idea/**
 config/database.yml
 coverage
+public/uploads
