@@ -9,6 +9,8 @@ class Card < ApplicationRecord
   validate :check_uniqueness
   before_validation :is_automatically_set
 
+  mount_uploader :avatar, AvatarUploader
+
   def is_automatically_set
     self.review_date ||= 3.days.from_now
   end

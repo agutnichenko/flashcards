@@ -1,2 +1,6 @@
 <label for='original text'>original word: <%= f.text_field :original_text %></label>
 <label for='translated text'>translated word: <%= f.text_field :translated_text %></label>
+<%= f.submit %>
+<label>My Avatar</label>
+<%= f.file_field :avatar %>
+<%= f.hidden_field :avatar_cache %>

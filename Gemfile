@@ -55,5 +55,8 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'shoulda'
 gem 'simplecov', :require => false, :group => :test
+#gem 'fog'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 
