@@ -1,0 +1,12 @@
+<h1>Editing Deck</h1>
+
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'new_deck' %>
+<% end %>
+<h1>create new deck</h1>
+<p><%= form_for @deck do |f| %>
+      <%= render partial: 'form', locals: {f: f, submit: 'submit'} %>
+  <% end %>
+</p>
+|
+<%= link_to 'Back', decks_path %>

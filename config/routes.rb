@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
+  resources :decks
   #resources :home
   resources :sessions, only: [:create]
   #post 'login' => 'sessions#create'

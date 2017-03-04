@@ -15,6 +15,7 @@
     <% unless params[:controller] == 'cards' && params[:action] == 'index' %>
         <%= link_to 'All cards', cards_path %>
     <% end %>
+    <%= link_to 'Decks', decks_path %>
     <%= link_to 'Add card', new_card_path %>
   </ul>
   <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>

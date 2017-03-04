@@ -4,3 +4,6 @@
 <label>My Avatar</label>
 <%= f.file_field :avatar %>
 <%= f.hidden_field :avatar_cache %>
+
+
+<label for='select deck'>select deck: <%= f.input :deck_id, collection: current_user.decks %></label>
