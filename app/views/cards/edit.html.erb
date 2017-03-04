@@ -1,5 +1,4 @@
 <h1>Edit card</h1>
-<p><%= form_for @card, html: { multipart: true } do |f| %>
-      <%= render partial: 'form', locals: {f: f, submit: 'save'} %>
-  <% end %>
-</p>
+<%= simple_form_for @card do |f| %>
+    <%= render partial: 'form', locals: {f: f, submit: 'save'} %>
+<% end %>

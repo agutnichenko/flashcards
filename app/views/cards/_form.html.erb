@@ -1,9 +1,6 @@
-<label for='original text'>original word: <%= f.text_field :original_text %></label>
-<label for='translated text'>translated word: <%= f.text_field :translated_text %></label>
-<%= f.submit %>
-<label>My Avatar</label>
+<%= f.input :original_text, label: 'original text', error: 'original_text is mandatory' %>
+<%= f.input :translated_text, label: 'translated text', error: 'translated_text is mandatory' %>
 <%= f.file_field :avatar %>
 <%= f.hidden_field :avatar_cache %>
-
-
-<label for='select deck'>select deck: <%= f.input :deck_id, collection: current_user.decks %></label>
+<%= f.input :deck_id, collection: current_user.decks, label: 'select deck' %>
+<%= f.button :submit %>

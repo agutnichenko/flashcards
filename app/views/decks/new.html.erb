@@ -2,7 +2,7 @@
     <%= stylesheet_link_tag 'new_deck' %>
 <% end %>
 <h1>create new deck</h1>
-<p><%= form_for @deck do |f| %>
+<p><%= simple_form_for @deck do |f| %>
       <%= render partial: 'form', locals: {f: f, submit: 'create'} %>
   <% end %>
 </p>

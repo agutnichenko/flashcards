@@ -2,7 +2,10 @@
     <%= stylesheet_link_tag 'new_card' %>
 <% end %>
 <h1>create new card</h1>
-<p><%= form_for @card do |f| %>
+<p><%= simple_form_for @card do |f| %>
       <%= render partial: 'form', locals: {f: f, submit: 'create'} %>
   <% end %>
 </p>
+
+
+<%= link_to 'Back', decks_path %>
