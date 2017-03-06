@@ -52,13 +52,6 @@ RSpec.describe DecksController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new deck as @deck" do
-      get :new, params: {}, session: valid_session
-      expect(assigns(:deck)).to be_a_new(Deck)
-    end
-  end
-
   describe "GET #edit" do
     it "assigns the requested deck as @deck" do
       deck = Deck.create! valid_attributes
