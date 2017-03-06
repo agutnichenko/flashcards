@@ -15,11 +15,11 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  def reset_current_state2(deck)
+  def set_current_state2(deck)
      update_attribute(:current_deck_id, deck.id)
   end
 
-  def set_current_state2
+  def reset_current_state2
      update_attribute(:current_deck_id, nil)
   end
 

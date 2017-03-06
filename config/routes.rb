@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
-  resources :decks
+  resources :decks do
+    put 'set_current_state', on: :member, as: :set_current_state
+    put 'reset_current_state', on: :member, as: :reset_current_state
+
+  end
   #resources :home
   resources :sessions, only: [:create]
   #post 'login' => 'sessions#create'

@@ -42,18 +42,11 @@ class CardsController < ApplicationController;
     redirect_to cards_url
   end
 
-  def reset_current_state
-    current_user.reset_current_state2
-  end
-
-  def set_current_state
-    current_user.set_current_state2(@deck)
-  end
-
   private
 
   def find_card
     @card = current_user.cards.find(params[:id])
+    redirect_to decks_path
   end
 
   def card_params

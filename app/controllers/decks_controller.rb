@@ -64,6 +64,15 @@ class DecksController < ApplicationController
     end
   end
 
+  def reset_current_state
+    current_user.reset_current_state2
+  end
+
+  def set_current_state
+    current_user.set_current_state2(@deck)
+    redirect_to decks_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_deck
