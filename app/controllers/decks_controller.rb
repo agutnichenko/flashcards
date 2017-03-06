@@ -4,7 +4,7 @@ class DecksController < ApplicationController
   # GET /decks
   # GET /decks.json
   def index
-    @decks = current_user.decks
+    @decks = current_user.decks.all
   end
 
   # GET /decks/1
@@ -64,19 +64,20 @@ class DecksController < ApplicationController
     end
   end
 
-  def reset_current_state
-    current_user.reset_current_state2
+  def make_current
+    current_user.update(current_deck_id: params[:id])
+    redirect_to decks_path
   end
 
-  def set_current_state
-    current_user.set_current_state2(@deck)
-    redirect_to decks_path
+  def current?
+    id == user.current_deck_id
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_deck
       @deck = current_user.decks.find(params[:id])
+      redirect_to decks_path
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

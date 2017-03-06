@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
   resources :decks do
-    put 'set_current_state', on: :member, as: :set_current_state
-    put 'reset_current_state', on: :member, as: :reset_current_state
-
+    put 'make_current', on: :member, as: :make_current
   end
   #resources :home
   resources :sessions, only: [:create]

@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :cards
   has_many :decks
+  belongs_to :current_deck, class_name: 'Deck'
   #, :authentications, :dependent => :destroy
   #accepts_nested_attributes_for :authentications
 
@@ -14,13 +15,5 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true
-
-  def set_current_state2(deck)
-     update_attribute(:current_deck_id, deck.id)
-  end
-
-  def reset_current_state2
-     update_attribute(:current_deck_id, nil)
-  end
 
 end
