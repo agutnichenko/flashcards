@@ -64,14 +64,6 @@ class DecksController < ApplicationController
     end
   end
 
-  def make_current
-    current_user.update(current_deck_id: params[:id])
-    redirect_to decks_path
-  end
-
-  def current?
-    id == user.current_deck_id
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

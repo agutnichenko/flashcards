@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @u = User.last
   end
   # GET /users/1/edit
   def edit

@@ -26,6 +26,8 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
+    <%= f.text_field :current_deck_id, collection: current_user.decks, label: 'select deck' %>
+
   <div class='actions'>
     <%= f.submit %>
   </div>
