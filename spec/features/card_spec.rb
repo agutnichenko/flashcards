@@ -11,8 +11,8 @@ RSpec.describe CardsController, :type => :feature do
       fill_in 'Password confirmation', with: '123456'
       click_button 'Create User'
       click_link 'Add card'
-      fill_in 'original word', with: 'qwerty'
-      fill_in 'translated word', with: 'qwerty'
+      fill_in 'original text', with: 'qwerty'
+      fill_in 'translated text', with: 'qwerty'
       click_button 'Create Card'
       expect(page).to have_current_path(cards_path)
     end

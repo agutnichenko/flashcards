@@ -46,7 +46,6 @@ class CardsController < ApplicationController;
 
   def find_card
     @card = current_user.cards.find(params[:id])
-    redirect_to decks_path
   end
 
   def card_params
@@ -54,4 +53,3 @@ class CardsController < ApplicationController;
   end
 
 end
-
