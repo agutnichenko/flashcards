@@ -4,10 +4,7 @@
     <%= stylesheet_link_tag 'new_deck' %>
 <% end %>
 <h1>create new deck</h1>
-
-<p><%= simple_form_for @deck do |f| %>
-    <%= render partial: 'form', locals: {f: f, submit: 'submit'} %>
-<% end %>
+<%= render partial: 'form', locals: { submit: 'submit' } %>
 |</p>
 
 <%= link_to 'Back', decks_path %>

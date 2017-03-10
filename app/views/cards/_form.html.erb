@@ -1,6 +1,8 @@
+<%= simple_form_for @card do |f| %>
 <%= f.input :original_text, label: 'original text', error: 'original_text is mandatory' %>
 <%= f.input :translated_text, label: 'translated text', error: 'translated_text is mandatory' %>
 <%= f.file_field :avatar %>
 <%= f.hidden_field :avatar_cache %>
 <%= f.input :deck_id, collection: current_user.decks, label: 'select deck' %>
 <%= f.button :submit %>
+<% end %>

@@ -1,21 +1,23 @@
-
-
-  <div class='field'>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+<%= simple_form_for @user do |f| %>
 
     <div class='field'>
-      <%= f.label :password %><br />
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :password %><br/>
       <%= f.password_field :password %>
     </div>
     <div class='field'>
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :password_confirmation %><br/>
       <%= f.password_field :password_confirmation %>
     </div>
 
     <%= f.input :current_deck_id, collection: current_user.decks, label: 'select deck' %>
 
-  <div class='actions'>
-    <%= f.submit %>
-  </div>
+    <div class='actions'>
+      <%= f.submit %>
+    </div>
+
+<% end %>
