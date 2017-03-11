@@ -3,15 +3,11 @@ class TrainersController < ApplicationController
 
     def review
       result = CheckCard.call(params: card_params, user: current_user)
-      if result.success?
-        redirect_to root_url, notice: 'перевод правильный'
-      else
-        redirect_to root_url, notice: 'перевод неправильный'
-      end
+      redirect_to :back, notice: result.notice
     end
 
   def card_params
-    params.require(:card).permit(:card_params)
+    params.permit(:original_text, :id)
   end
 
 end
