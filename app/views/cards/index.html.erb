@@ -1,6 +1,6 @@
 <h1>Cards</h1>
 <h3>My profile</h3>
-<%= link_to 'Edit', edit_users_path %> |
+<%= link_to 'Edit', edit_user_path %> |
 <% if @cards.empty? %>
     <b>no items in store</b>
 <% else %>
@@ -18,10 +18,11 @@
             <td><%= card.original_text %></td>
             <td><%= card.translated_text %></td>
             <td><%= card.review_date %></td>
-            <td><%= link_to 'Редактировать', edit_card_path(card)%></td>
-            <td><%= button_to 'Удалить', card_path(card), method: :delete, data: { confirm: 'indeed?' }%></td>
+            <td><%= link_to 'Редактировать', edit_card_path(card) %></td>
+            <td><%= button_to 'Удалить', card_path(card), method: :delete, data: { confirm: 'indeed?' } %></td>
           </tr>
       <% end %>
+
 <% end %>
 
 <h1>Translate card</h1>

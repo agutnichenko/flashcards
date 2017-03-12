@@ -14,7 +14,7 @@ RSpec.describe UsersController, :type => :feature do
       fill_in 'Password', with: '12'
       fill_in 'Password confirmation', with: '12'
       click_button 'Update User'
-      expect(page).to have_content 'Password is too short (minimum is 3 characters)'
+      expect(page).not_to have_content 'User was successfully updated'
     end
 
   end

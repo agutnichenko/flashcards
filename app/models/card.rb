@@ -1,6 +1,7 @@
 class Card < ApplicationRecord
 
   belongs_to :user
+  belongs_to :deck
 
   validates :original_text, presence: true
   validates :translated_text, presence: true
