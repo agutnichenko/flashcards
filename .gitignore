@@ -23,7 +23,7 @@
 RubyMine files
 MAC OS file
 .DS_Store
-Gemfile.lock
+#Gemfile.lock
 .scss
 .coffee
 _helper.rb

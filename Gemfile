@@ -60,5 +60,5 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'simple_form'
 gem 'interactor'
-
+gem 'rails_12factor', group: :production
 
