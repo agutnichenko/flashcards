@@ -7,12 +7,9 @@ class CheckCard
       @card_translation.review_date = 3.days.from_now
       result = @card_translation.save
       context.result = result
-      notice = 'true answer'
-      context.notice = notice
+      context.notice = 'true answer'
     else
-      #context.fail!
-      notice = 'false answer'
-      context.notice = notice
+      context.notice = 'false answer'
     end
   end
 
