@@ -18,7 +18,7 @@ class Card < ApplicationRecord
 
   def check_uniqueness
     unless self.original_text.downcase != self.translated_text.downcase
-      errors.add(:base, I18n.t('uniqueness'))
+      errors.add(:base, i18n.t('uniqueness'))
     end
   end
 
