@@ -8,7 +8,7 @@ RSpec.describe Card, :type => :model do
 
   it 'check_date method' do
     card = FactoryGirl.create(:card)
-    expect(card.review_date.strftime('%a, %e %b %Y')).to eq(3.days.from_now.strftime('%a, %e %b %Y'))
+    expect(card.review_date.strftime('%a, %e %b %Y')).to eq(Time.now.strftime('%a, %e %b %Y'))
   end
 
   it 'check random method' do
