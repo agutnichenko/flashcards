@@ -19,35 +19,25 @@ class CheckCard
 
   def incorrect_answer
     context.notice = 'incorrect_answer'
-    @card_translation.counter_incorrect += @card_translation.counter_incorrect
-    update_review_date_incorrect
+    if @card_translation.counter_incorrect == 3
+      @card_translation.update(counter_incorrect: 0, counter_correct: 0)
+    else
+      @card_translation.update(counter_correct: @card_translation.counter_correct + 1)
+    end
   end
 
   def update_review_date_correct
     case @card_translation.counter_correct
-      when '1'
+      when 1
         @card_translation.review_date = 12.hours.from_now
-      when '2'
+      when 2
         @card_translation.review_date = 3.days.from_now
-      when '3'
+      when 3
         @card_translation.review_date = 7.days.from_now
-      when '4'
+      when 4
         @card_translation.review_date = 14.days.from_now
-      when '5'
+      when 5
         @card_translation.review_date = 1.month.from_now
-      else
-        p 'nothing'
-    end
-  end
-
-  def update_review_date_incorrect
-    case @card_translation.counter_incorrect
-      when '1'
-        @card_translation.review_date = 12.hours.from_now
-      when '2'
-        @card_translation.review_date = 3.days.from_now
-      when '3'
-        @card_translation.review_date = Time.now
       else
         p 'nothing'
     end
@@ -55,7 +45,6 @@ class CheckCard
 
   def save
     result = @card_translation.save
-    context.result = result
   end
 
 end
