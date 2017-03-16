@@ -8,21 +8,23 @@ class CheckCard
     else
       incorrect_answer
     end
+    save
   end
 
   def correct_answer
     context.notice = 'correct_answer'
-    @card_translation.counter += @card_translation.counter
-    check_review_date_correct
+    @card_translation.counter_correct += @card_translation.counter_correct
+    update_review_date_correct
   end
 
   def incorrect_answer
     context.notice = 'incorrect_answer'
-    check_review_date_incorrect
+    @card_translation.counter_incorrect += @card_translation.counter_incorrect
+    update_review_date_incorrect
   end
 
-  def check_review_date_correct
-    case @card_translation.counter
+  def update_review_date_correct
+    case @card_translation.counter_correct
       when '1'
         @card_translation.review_date = 12.hours.from_now
       when '2'
@@ -36,16 +38,19 @@ class CheckCard
       else
         p 'nothing'
     end
-    save
   end
 
-  def check_review_date_incorrect
-    if @card_translation.counter == 2
-      @card_translation.counter = 0
-    else
-      check_review_date_correct
+  def update_review_date_incorrect
+    case @card_translation.counter_incorrect
+      when '1'
+        @card_translation.review_date = 12.hours.from_now
+      when '2'
+        @card_translation.review_date = 3.days.from_now
+      when '3'
+        @card_translation.review_date = Time.now
+      else
+        p 'nothing'
     end
-    save
   end
 
   def save
