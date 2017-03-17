@@ -13,7 +13,7 @@ class CheckCard
 
   def correct_answer
     context.notice = 'correct_answer'
-    @card_translation.counter_correct += @card_translation.counter_correct
+    @card_translation.update(counter_correct: @card_translation.counter_correct + 1)
     update_review_date_correct
   end
 
