@@ -4,6 +4,7 @@ class TrainersController < ApplicationController
     def review
       result = CheckCard.call(params: card_params, user: current_user)
       redirect_to :back, notice: result.notice
+      puts result
     end
 
   def card_params

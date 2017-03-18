@@ -7,18 +7,18 @@ RSpec.describe Card, :type => :model do
   end
 
   it 'check_date method' do
-    card = FactoryGirl.create(:card)
+    card = FactoryGirl.create(:card, counter_correct: 0, counter_incorrect: 0)
     expect(card.review_date.strftime('%a, %e %b %Y')).to eq(Time.now.strftime('%a, %e %b %Y'))
   end
 
   it 'check random method' do
-    card = FactoryGirl.create(:card)
+    card = FactoryGirl.create(:card, counter_correct: 0, counter_incorrect: 0)
     expect(card.id).not_to be_nil
   end
 
   it 'should not create duplicate card' do
-    expect(FactoryGirl.create(:card, original_text: 'hello')).to be_persisted
-    card = FactoryGirl.build(:card, original_text: 'hello')
+    expect(FactoryGirl.create(:card, original_text: 'hello', counter_correct: 0, counter_incorrect: 0)).to be_persisted
+    card = FactoryGirl.build(:card, original_text: 'hello', counter_correct: 0, counter_incorrect: 0)
     card.valid?
     expect(card.errors[:original_text]).to include 'has already been taken'
   end

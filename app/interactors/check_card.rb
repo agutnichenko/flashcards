@@ -30,14 +30,19 @@ class CheckCard
     case @card_translation.counter_correct
       when 1
         @card_translation.review_date = 12.hours.from_now
+        context.review_date = 12.hours.from_now
       when 2
         @card_translation.review_date = 3.days.from_now
+        context.review_date = 3.days.from_now
       when 3
         @card_translation.review_date = 7.days.from_now
+        context.review_date = 7.days.from_now
       when 4
         @card_translation.review_date = 14.days.from_now
+        context.review_date = 14.days.from_now
       when 5
         @card_translation.review_date = 1.month.from_now
+        context.review_date = 1.month.from_now
       else
         p 'nothing'
     end
