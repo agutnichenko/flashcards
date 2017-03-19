@@ -64,10 +64,10 @@ RSpec.describe CheckCard, type: :interactor do
     end
   end
 
-  def create_and_call_card_with(correct, incorrect, answer=true)
+  def create_and_call_card_with(correct, incorrect, answer = true)
     card = create(:card, counter_correct: correct, counter_incorrect: incorrect)
     original = answer ? card.original_text : 'something'
-    params = {original_text: original, id: card.id}
+    params = { original_text: original, id: card.id }
     CheckCard.call(user: card.user, params: params)
     card.reload
   end

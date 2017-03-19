@@ -43,7 +43,7 @@ class CheckCard
   end
 
   def save
-    result = @card_translation.save
+    @card_translation.save
   end
 
 end
