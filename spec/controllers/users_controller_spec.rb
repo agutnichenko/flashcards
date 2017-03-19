@@ -133,7 +133,7 @@ RSpec.describe UsersController, type: :controller do
         expect(assigns(:user)).to eq(user)
       end
 
-      it "re-renders the 'edit' template" do
+      it 're-renders the "edit" template' do
         user = User.create! valid_attributes
         put :update, params: {id: user.to_param, user: invalid_attributes}, session: valid_session
         expect(response).to render_template('edit')

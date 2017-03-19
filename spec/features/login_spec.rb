@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe SessionsController, :type => :feature do
+RSpec.describe SessionsController, type: :feature do
   describe 'session controller methods' do
 
     it 'check that user can login with valid credentials' do

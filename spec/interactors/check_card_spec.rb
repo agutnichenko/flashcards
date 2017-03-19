@@ -1,68 +1,74 @@
 require 'rails_helper'
-RSpec.describe Card, :type => :iteractor do
 
-  it 'check review_date after first successful attempt ' do
-    @current_user = FactoryGirl.create(:user)
-    @card = FactoryGirl.create(:card, user: @current_user, counter_correct: 0, counter_incorrect: 0)
-    @params = { original_text: @card.original_text, id: @card.id, counter_correct: @card.counter_correct, counter_incorrect: @card.counter_incorrect }
-    result = CheckCard.call(user: @current_user, params: @params)
-    expect(result.review_date.strftime('%a, %e %b %Y')).to eq(12.hours.from_now.strftime('%a, %e %b %Y'))
+RSpec.describe CheckCard, type: :interactor do
+  describe '#call' do
+    context 'correct answer' do
+      context '0 correct, < 3 incorrect' do
+        it 'review_date + 12 hours' do
+          card = create_and_call_card_with(0, 0)
+          expect(card.review_date.to_date).to eq(12.hours.since.to_date)
+        end
+      end
+
+      context '1 correct, < 3 incorrect' do
+        it 'review_date + 3 days' do
+          card = create_and_call_card_with(1, 0)
+          expect(card.review_date.to_date).to eq(3.days.since.to_date)
+        end
+      end
+
+      context '2 correct, < 3 incorrect' do
+        it 'review_date + 7 days' do
+          card = create_and_call_card_with(2, 0)
+          expect(card.review_date.to_date).to eq(7.days.since.to_date)
+        end
+      end
+
+      context '3 correct, < 3 incorrect' do
+        it 'review_date + 2 weeks' do
+          card = create_and_call_card_with(3, 0)
+          expect(card.review_date.to_date).to eq(2.weeks.since.to_date)
+        end
+      end
+
+      context '4 or more correct, < 3 incorrect' do
+        it 'review_date + 1 month' do
+          card = create_and_call_card_with(4, 0)
+          expect(card.review_date.to_date).to eq(1.month.since.to_date)
+        end
+      end
+    end
+
+    context 'incorrect_answer' do
+      context 'any correct, 1 incorrect' do
+        it 'same review_date' do
+          card = create_and_call_card_with(0, 1, false)
+          expect(card.review_date.to_date).to eq(Time.now.to_date)
+        end
+      end
+
+      context 'any correct, 2 incorrect' do
+        it 'same review_date' do
+          card = create_and_call_card_with(0, 2, false)
+          expect(card.review_date.to_date).to eq(Time.now.to_date)
+        end
+      end
+
+      context 'any correct, 3 incorrect' do
+        it 'drops counters' do
+          card = create_and_call_card_with(0, 3, false)
+          expect(card.counter_correct).to eq(0)
+          expect(card.counter_incorrect).to eq(0)
+        end
+      end
+    end
   end
 
-  it 'check review_date after second successful attempt ' do
-    @current_user = FactoryGirl.create(:user)
-    @card = FactoryGirl.create(:card, user: @current_user, counter_correct: 1, counter_incorrect: 0)
-    @params = { original_text: @card.original_text, id: @card.id, counter_correct: @card.counter_correct, counter_incorrect: @card.counter_incorrect }
-    result = CheckCard.call(user: @current_user, params: @params)
-    expect(result.review_date.strftime('%a, %e %b %Y')).to eq(3.days.from_now.strftime('%a, %e %b %Y'))
+  def create_and_call_card_with(correct, incorrect, answer=true)
+    card = create(:card, counter_correct: correct, counter_incorrect: incorrect)
+    original = answer ? card.original_text : 'something'
+    params = {original_text: original, id: card.id}
+    CheckCard.call(user: card.user, params: params)
+    card.reload
   end
-
-  it 'check review_date after third successful attempt ' do
-    @current_user = FactoryGirl.create(:user)
-    @card = FactoryGirl.create(:card, user: @current_user, counter_correct: 2, counter_incorrect: 0)
-    @params = { original_text: @card.original_text, id: @card.id, counter_correct: @card.counter_correct, counter_incorrect: @card.counter_incorrect }
-    result = CheckCard.call(user: @current_user, params: @params)
-    expect(result.review_date.strftime('%a, %e %b %Y')).to eq(7.days.from_now.strftime('%a, %e %b %Y'))
-  end
-
-  it 'check review_date after fourth successful attempt ' do
-    @current_user = FactoryGirl.create(:user)
-    @card = FactoryGirl.create(:card, user: @current_user, counter_correct: 3, counter_incorrect: 0)
-    @params = { original_text: @card.original_text, id: @card.id, counter_correct: @card.counter_correct, counter_incorrect: @card.counter_incorrect }
-    result = CheckCard.call(user: @current_user, params: @params)
-    expect(result.review_date.strftime('%a, %e %b %Y')).to eq(14.days.from_now.strftime('%a, %e %b %Y'))
-  end
-
-  it 'check review_date after fifth successful attempt ' do
-    @current_user = FactoryGirl.create(:user)
-    @card = FactoryGirl.create(:card, user: @current_user, counter_correct: 4, counter_incorrect: 0)
-    @params = { original_text: @card.original_text, id: @card.id, counter_correct: @card.counter_correct, counter_incorrect: @card.counter_incorrect }
-    result = CheckCard.call(user: @current_user, params: @params)
-    expect(result.review_date.strftime('%a, %e %b %Y')).to eq(1.month.from_now.strftime('%a, %e %b %Y'))
-  end
-
-  it 'check review_date after first unsuccessful attempt ' do
-    @current_user = FactoryGirl.create(:user)
-    @card = FactoryGirl.create(:card, user: @current_user, counter_correct: 0, counter_incorrect: 1)
-    @params = { original_text: @card.original_text, id: @card.id, counter_correct: @card.counter_correct, counter_incorrect: @card.counter_incorrect }
-    result = CheckCard.call(user: @current_user, params: @params)
-    expect(result.review_date.strftime('%a, %e %b %Y')).to eq(12.hours.from_now.strftime('%a, %e %b %Y'))
-  end
-
-  it 'check review_date after first unsuccessful attempt ' do
-    @current_user = FactoryGirl.create(:user)
-    @card = FactoryGirl.create(:card, user: @current_user, counter_correct: 0, counter_incorrect: 2)
-    @params = { original_text: @card.original_text, id: @card.id, counter_correct: @card.counter_correct, counter_incorrect: @card.counter_incorrect }
-    result = CheckCard.call(user: @current_user, params: @params)
-    expect(result.review_date.strftime('%a, %e %b %Y')).to eq(12.hours.from_now.strftime('%a, %e %b %Y'))
-  end
-
-  it 'check review_date after third unsuccessful attempt ' do
-    @current_user = FactoryGirl.create(:user)
-    @card = FactoryGirl.create(:card, user: @current_user, counter_correct: 0, counter_incorrect: 3)
-    @params = { original_text: @card.original_text, id: @card.id, counter_correct: @card.counter_correct, counter_incorrect: @card.counter_incorrect }
-    result = CheckCard.call(user: @current_user, params: @params)
-    expect(@card.review_date.strftime('%a, %e %b %Y')).to eq(Time.now.strftime('%a, %e %b %Y'))
-  end
-
 end

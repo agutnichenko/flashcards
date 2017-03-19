@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe CardsController, :type => :feature do
+RSpec.describe CardsController, type: :feature do
   describe 'card controller methods' do
 
     it 'check_uniqueness' do
