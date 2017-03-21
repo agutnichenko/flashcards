@@ -13,12 +13,13 @@ class Card < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   def is_automatically_set
-    self.review_date ||= 3.days.from_now
+    #self.review_date ||= 3.days.from_now
+    self.review_date ||= Time.now
   end
 
   def check_uniqueness
     unless self.original_text.downcase != self.translated_text.downcase
-      errors.add(:base, i18n.t('uniqueness'))
+      errors.add(:base, I18n.t('uniqueness'))
     end
   end
 

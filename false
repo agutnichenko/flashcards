@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20170315162623_add_counter_to_cards.rb

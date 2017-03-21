@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Card, :type => :model do
+RSpec.describe Card, type: :model do
   it 'check uniqueness' do
     card = Card.new(original_text: 'ds', translated_text: 'ds')
     expect(card.check_uniqueness).to include 'translated text should not be equal to original one'
@@ -8,7 +8,7 @@ RSpec.describe Card, :type => :model do
 
   it 'check_date method' do
     card = FactoryGirl.create(:card)
-    expect(card.review_date.strftime('%a, %e %b %Y')).to eq(3.days.from_now.strftime('%a, %e %b %Y'))
+    expect(card.review_date.to_date).to eq(Time.now.to_date)
   end
 
   it 'check random method' do

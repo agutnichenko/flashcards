@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe UsersController, :type => :feature do
+RSpec.describe UsersController, type: :feature do
   describe 'user controller methods' do
 
     it 'check that user can not update profile with too short password' do

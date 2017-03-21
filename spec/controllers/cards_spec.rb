@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CardsController, :type => :controller do
+RSpec.describe CardsController, type: :controller do
   describe 'GET #index' do
 
     it 'responds successfully with an HTTP 200 status code' do
@@ -15,8 +15,8 @@ RSpec.describe CardsController, :type => :controller do
 
     it 'renders the show template if item found' do
       user = FactoryGirl.create(:user)
-      card = FactoryGirl.create(:card, user: user)
       login_user(user)
+      card = FactoryGirl.create(:card, user: user)
       get :show, params: {id: card.id}
       expect(response).to render_template('show')
     end

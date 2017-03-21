@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe RegistrationsController, :type => :feature do
+RSpec.describe RegistrationsController, type: :feature do
   describe 'registration controller methods' do
 
     it 'check that registartion with valid data' do
