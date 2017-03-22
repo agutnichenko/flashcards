@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
 gem 'nokogiri', '1.6.8.1'
-gem 'sass-rails'
 gem 'pg'
+gem 'sass-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use Puma as the app server
@@ -53,11 +53,10 @@ gem 'pry-rails'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'shoulda'
-gem 'simplecov', :require => false, :group => :test
 gem 'carrierwave', '~> 1.0'
+gem 'simplecov', :require => false, :group => :test
 gem 'mini_magick'
 gem 'simple_form'
 gem 'interactor'
-gem 'rails_12factor', group: :production
 gem 'damerau-levenshtein'
-
+gem 'rails_12factor', group: :production
