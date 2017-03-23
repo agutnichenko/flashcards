@@ -65,15 +65,15 @@ RSpec.describe CheckCard, type: :interactor do
       context '6 or less digits' do
         context '1 or less errors' do
           it 'trigers correct_answer def' do
-            check_translation('123456', '124356')
-            expect(CheckCard.any_instance).to receive(CheckCard.correct_answer)
+            card = check_translation('1234567', '1243567')
+            expect(card.review_date.to_date).not_to eq(Time.now.to_date)
           end
         end
 
         context 'more than 1 error' do
           it 'trigers incorrect_answer def' do
-            check_translation('123456', '12345678')
-            expect(CheckCard.any_instance).to receive(CheckCard.incorrect_answer)
+            card = check_translation('123456', '12345678')
+            expect(card.review_date.to_date).to eq(Time.now.to_date)
           end
         end
       end
@@ -81,18 +81,18 @@ RSpec.describe CheckCard, type: :interactor do
     context 'more than 6 digits' do
       context '2 or less errors' do
         it 'trigers correct_answer def' do
-          check_translation('1234567891', '1774567891')
-          expect(CheckCard.any_instance).to receive(CheckCard.correct_answer)
+          card = check_translation('12345678910123', '17745678910123')
+          expect(card.review_date.to_date).not_to eq(Time.now.to_date)
         end
       end
 
       context 'more than 2 errors' do
         it 'trigers incorrect_answer def' do
-          check_translation('1234567891', '1777567891')
-          expect(CheckCard.any_instance).to receive(CheckCard.incorrect_answer)
+          card = check_translation('1234567891', '1777567891')
+          expect(card.review_date.to_date).to eq(Time.now.to_date)
         end
       end
-    end
+     end
   end
 end
 
