@@ -1,14 +1,9 @@
 class CheckCard
-  require 'damerau-levenshtein'
   include Interactor
 
   def call
     @card_translation = context.user.cards.find(context.params[:id])
-    size = @card_translation.original_text.length
-    if size <= 6 && DamerauLevenshtein.distance(@card_translation.original_text, context.params[:original_text]).to_i <= 1
-      correct_answer
-      save
-    elsif size > 6 && DamerauLevenshtein.distance(@card_translation.original_text, context.params[:original_text]).to_i <= 2
+    if answers_equal?(@card_translation.original_text, context.params[:original_text])
       correct_answer
       save
     else
@@ -49,6 +44,15 @@ class CheckCard
 
   def save
     @card_translation.save
+  end
+
+  ALLOWED_LEVEL = 0.15
+
+  def answers_equal?(original, version)
+    distance = DamerauLevenshtein.distance(original, version)
+    length = original.size
+    relation = (distance / length.to_f)
+    relation <= ALLOWED_LEVEL
   end
 
 end

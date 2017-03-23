@@ -62,34 +62,35 @@ RSpec.describe CheckCard, type: :interactor do
         end
       end
 
-      context '6 or less digits'
-      context '1 or less errors' do
+      context '6 or less digits' do
+        context '1 or less errors' do
+          it 'trigers correct_answer def' do
+            check_translation('123456', '124356')
+            expect(CheckCard.any_instance).to receive(CheckCard.correct_answer)
+          end
+        end
+
+        context 'more than 1 error' do
+          it 'trigers incorrect_answer def' do
+            check_translation('123456', '12345678')
+            expect(CheckCard.any_instance).to receive(CheckCard.incorrect_answer)
+          end
+        end
+      end
+    end
+    context 'more than 6 digits' do
+      context '2 or less errors' do
         it 'trigers correct_answer def' do
-          check_translation('123456', '124356')
+          check_translation('1234567891', '1774567891')
           expect(CheckCard.any_instance).to receive(CheckCard.correct_answer)
         end
       end
 
-      context 'more than 1 error' do
+      context 'more than 2 errors' do
         it 'trigers incorrect_answer def' do
-          check_translation('123456', '12345678')
+          check_translation('1234567891', '1777567891')
           expect(CheckCard.any_instance).to receive(CheckCard.incorrect_answer)
         end
-      end
-    end
-
-    context 'more than 6 digits'
-    context '2 or less errors' do
-      it 'trigers correct_answer def' do
-        check_translation('1234567891', '1774567891')
-        expect(CheckCard.any_instance).to receive(CheckCard.correct_answer)
-      end
-    end
-
-    context 'more than 2 errors' do
-      it 'trigers incorrect_answer def' do
-        check_translation('1234567891', '1777567891')
-        expect(CheckCard.any_instance).to receive(CheckCard.incorrect_answer)
       end
     end
   end
@@ -98,14 +99,14 @@ end
 def create_and_call_card_with(correct, incorrect, answer = true)
   card = FactoryGirl.create(:card, counter_correct: correct, counter_incorrect: incorrect)
   original = answer ? card.original_text : 'blablabla'
-  params = { original_text: original, id: card.id }
+  params = {original_text: original, id: card.id}
   CheckCard.call(user: card.user, params: params)
   card.reload
 end
 
 def check_translation(original, input)
   card = FactoryGirl.create(:card, original_text: original)
-  params = { original_text: input, id: card.id }
+  params = {original_text: input, id: card.id}
   CheckCard.call(user: card.user, params: params)
   card.reload
 end
