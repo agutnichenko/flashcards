@@ -3,7 +3,7 @@ class CheckCard
 
   def call
     @card_translation = context.user.cards.find(context.params[:id])
-    if @card_translation.original_text == context.params[:original_text]
+    if answers_equal?(@card_translation.original_text, context.params[:original_text])
       correct_answer
       save
     else
@@ -44,6 +44,15 @@ class CheckCard
 
   def save
     @card_translation.save
+  end
+
+  ALLOWED_LEVEL = 0.15
+
+  def answers_equal?(original, version)
+    distance = DamerauLevenshtein.distance(original, version)
+    length = original.size
+    relation = (distance / length.to_f)
+    relation <= ALLOWED_LEVEL
   end
 
 end

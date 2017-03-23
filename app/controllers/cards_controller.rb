@@ -1,5 +1,4 @@
-class CardsController < ApplicationController;
-
+class CardsController < ApplicationController
   before_action :find_card, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -21,7 +20,7 @@ class CardsController < ApplicationController;
 
   def create
     @card = current_user.cards.create(card_params)
-    if  @card.valid?
+    if @card.valid?
       redirect_to card_path(@card), notice: 'card is created!'
     else
       render 'new'
@@ -51,5 +50,4 @@ class CardsController < ApplicationController;
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :avatar, :deck_id)
   end
-
 end
