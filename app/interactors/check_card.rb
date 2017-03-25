@@ -9,7 +9,6 @@ class CheckCard
     else
       incorrect_answer
     end
-    send_notification
   end
 
   def correct_answer
@@ -54,10 +53,6 @@ class CheckCard
     length = original.size
     relation = (distance / length.to_f)
     relation <= ALLOWED_LEVEL
-  end
-
-  def send_notification
-    CardsMailer.pending_cards_notification(context.user.email).deliver_now if @card_translation.review_date.to_date == Time.now.to_date
   end
 
 end
