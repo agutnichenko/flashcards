@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>Флэшкарточкер</title>
+  <title><%= t(:title) %></title>
 
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <section id='container'>
-  <h1>Флэшкарточкер</h1>
+  <h1><p><%= t(:title) %></p></h1>
   <ul class='navigation-links'>
     <% unless params[:controller] == 'cards' && params[:action] == 'index' %>
         <%= link_to 'All cards', cards_path %>
@@ -18,7 +18,7 @@
     <%= link_to 'Decks', decks_path %>
     <%= link_to 'Add card', new_card_path %>
   </ul>
-  <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+  <p><%= t(:paragraph) %></p>
   <div id='nav'>
     <% if current_user %>
 

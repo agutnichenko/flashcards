@@ -1,0 +1,28 @@
+ru:
+  title: 'Флэшкарточкер'
+  paragraph: 'Первый в мире удобный менеджер флеш-карточек. Именно так.'
+  save: 'сохранить'
+  edit: 'редактировать'
+  delete: 'удалить'
+  confirm: 'вы уверены?'
+  translate_card: 'Переведите карточку'
+  no_items: 'Карточек больше нет'
+  eng_translation: 'Перевод на английский:'
+  your_translation: 'Ваш перевод'
+  new_deck: 'Создать новую колоду'
+  new_user: 'Создать нового пользователя'
+  user_updated: 'Профайл успешно обновлен'
+
+
+  simple_form:
+    labels:
+     card:
+         original_text: 'оригинал'
+         uniqueness: 'перевод не может совпадать с переводом'
+         existing_card: 'имя уже существует'
+         translated_text: 'перевод'
+         avatar: 'аватар'
+         submit: 'создать'
+         deck_id: 'выбрать колоду'
+     deck:
+          name: 'имя колоды'

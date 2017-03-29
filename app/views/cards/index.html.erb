@@ -1,6 +1,6 @@
 <h1>Cards</h1>
 <h3>My profile</h3>
-<%= link_to 'Edit', edit_user_path %> |
+<%= link_to t(:edit), edit_user_path %> |
 <% if @cards.empty? %>
     <b>no items in store</b>
 <% else %>
@@ -18,25 +18,25 @@
             <td><%= card.original_text %></td>
             <td><%= card.translated_text %></td>
             <td><%= card.review_date %></td>
-            <td><%= link_to 'Редактировать', edit_card_path(card) %></td>
-            <td><%= button_to 'Удалить', card_path(card), method: :delete, data: { confirm: 'indeed?' } %></td>
+            <td><%= link_to t(:edit), edit_card_path(card) %></td>
+            <td><%= button_to t(:delete), card_path(card), method: :delete, data: { confirm: t(:confirm) } %></td>
           </tr>
       <% end %>
 
 <% end %>
 
-<h1>Translate card</h1>
+<h1><%= t(:translate_card) %></h1>
 <% if @card.blank? %>
-    <b>no items in store</b>
+    <b><%= t(:no_items) %></b>
 <% else %>
     <p>
-      English translation: <%= @card.translated_text %>
+       <%= t(:eng_translation) %> <%= @card.translated_text %>
     </p>
 
     <p>
       <%= form_tag trainer_path(@card) do %>
           <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
-          your translation: <%= text_field_tag :original_text %>
+           <%= t(:your_translation) %> <%= text_field_tag :original_text %>
           <%= submit_tag 'check translation' %>
       <% end %>
 <% end %>
