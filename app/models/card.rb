@@ -27,4 +27,8 @@ class Card < ApplicationRecord
     Card.where('review_date <= ?', Time.current).order('RANDOM()').first
   end
 
+  def self.send_notification
+    CardsMailer.pending_cards_notification(user).deliver_now if @card_translation.review_date.to_date == Time.now.to_date
+  end
+
 end
