@@ -1,24 +1,16 @@
 Rails.application.routes.draw do
   get 'oauths/oauth'
   get 'oauths/callback'
-
   resource :user, only: [:edit, :update, :show]
   root 'home#index'
-
   post 'trainers/:id/review', to: 'trainers#review', as: 'trainer'
   resources :cards
   resources :decks
-  #resources :home
   resources :sessions, only: [:create]
-  #post 'login' => 'sessions#create'
   resources :registrations, only: [:new, :create]
-
-  #root :to => 'users#index'
-  root :to => 'registrations#index'
-
-  get 'login' => 'sessions#new', :as => :login
-  delete 'logout' => 'sessions#destroy'
-
+  root to: 'registrations#index'
+  get 'login', to: 'sessions#new', :as => :login
+  delete 'logout', to: 'sessions#destroy'
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback' # for use with Github, Facebook
   get 'oauth/:provider', to: 'oauths#oauth', :as => :auth_at_provider
