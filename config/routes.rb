@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', :as => :login
   delete 'logout' => 'sessions#destroy'
 
-  post 'oauth/callback' => 'oauths#callback'
-  get 'oauth/callback' => 'oauths#callback' # for use with Github, Facebook
-  get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
-  scope '(:locale)', :locale => /en|ru/ do
+  post 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/callback', to: 'oauths#callback' # for use with Github, Facebook
+  get 'oauth/:provider', to: 'oauths#oauth', :as => :auth_at_provider
+  scope '(:locale)', locale: /en|ru/ do
     resources :login
     resources :registrations
   end
