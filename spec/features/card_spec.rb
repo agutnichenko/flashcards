@@ -10,9 +10,9 @@ RSpec.describe CardsController, type: :feature do
       fill_in 'Password', with: '123456'
       fill_in 'Password confirmation', with: '123456'
       click_button 'Create User'
-      click_link 'Add card'
-      fill_in 'original text', with: 'qwerty'
-      fill_in 'translated text', with: 'qwerty'
+      click_link 'Add new card'
+      fill_in 'Original text', with: 'qwerty'
+      fill_in 'Translated text', with: 'qwerty'
       click_button 'Create Card'
       expect(page).to have_current_path(cards_path)
     end
@@ -23,7 +23,7 @@ RSpec.describe CardsController, type: :feature do
       fill_in 'Password', with: '123456'
       fill_in 'Password confirmation', with: '123456'
       click_button 'Create User'
-      click_link 'Add card'
+      click_link 'Add new card'
       expect(page).to have_xpath '//*[@id="card_avatar"]'
     end
   end

@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: :feature do
       fill_in 'Password', with: '123456'
       fill_in 'Password confirmation', with: '123456'
       click_button 'Create User'
-      click_link 'Edit'
+      click_link 'Profile'
       fill_in 'Password', with: '12'
       fill_in 'Password confirmation', with: '12'
       click_button 'Update User'

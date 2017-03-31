@@ -11,7 +11,7 @@ RSpec.describe RegistrationsController, type: :feature do
       fill_in 'Password', with: '123456'
       fill_in 'Password confirmation', with: '123456'
       click_button 'Create User'
-      expect(page).to have_content 'Cards'
+      expect(page).to have_content 'The very best vocabulary ever'
     end
 
     it 'check that registartion with mismatching passwords fails' do

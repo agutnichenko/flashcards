@@ -10,7 +10,7 @@ RSpec.describe SessionsController, type: :feature do
       fill_in 'Password', with: '123456'
       fill_in 'Password confirmation', with: '123456'
       click_button 'Create User'
-      click_link 'Logout'
+      click_link 'Sign out'
       fill_in 'Email', with: 'blwvhwfdfdfdhmhmhntwkejbv@i.ua'
       fill_in 'Password', with: '123456'
       click_button 'Login'
@@ -22,7 +22,7 @@ RSpec.describe SessionsController, type: :feature do
       fill_in 'Email', with: 'quo_vadis@i.ua'
       fill_in 'Password', with: '1234568910'
       click_button 'Login'
-      expect(page).to have_content 'Register | Login'
+      expect(page).to have_content 'Register | Sign in'
     end
 
   end

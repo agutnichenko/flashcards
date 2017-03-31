@@ -1,15 +1,12 @@
-<h1>Cards</h1>
-<h3>My profile</h3>
-<%= link_to t(:edit), edit_user_path %> |
 <% if @cards.empty? %>
     <b>no items in store</b>
 <% else %>
     <table>
       <tr>
-        <th>card id</th>
-        <th>original_text</th>
-        <th>translated_text</th>
-        <th>review_date</th>
+        <th><%=t(:image) %></th>
+        <th><%=t(:original_text) %></th>
+        <th><%=t(:translated_text) %></th>
+        <th><%=t(:review_date) %></th>
       </tr>
 
       <% @cards.each do |card| %>
@@ -37,7 +34,7 @@
       <%= form_tag trainer_path(@card) do %>
           <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
            <%= t(:your_translation) %> <%= text_field_tag :original_text %>
-          <%= submit_tag 'check translation' %>
+          <%= submit_tag t(:check_translation) %>
       <% end %>
 <% end %>
 

@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_to(:decks, notice: 'Login successful')
+      redirect_to(:decks, notice: t(:login_successful))
     else
-      render action: 'new', notice: 'Login failed'
+      render action: 'new', notice: t(:login_failed)
     end
   end
 
