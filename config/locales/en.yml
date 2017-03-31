@@ -1,4 +1,5 @@
 en:
+  uniqueness: 'Translated text should not be equal to original one'
   title: 'Flashcards'
   paragraph: 'The very best vocabulary ever'
   save: 'Save'
@@ -33,7 +34,6 @@ en:
     labels:
      card:
          original_text: 'Original text'
-         uniqueness: 'Translated text should not be equal to original one'
          existing_card: 'Has already been taken'
          translated_text: 'Translated text'
          review_date: 'Review date'
