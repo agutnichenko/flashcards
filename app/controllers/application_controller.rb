@@ -4,21 +4,23 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   def set_locale
-    I18n.locale = if logged_in?
+    locale = if logged_in?
                     current_user.language
                   elsif params[:locale]
                     params[:locale]
                   else
-                    extract_locale_from_accept_language_header
+                    session[:locale]
                   end
+
+    if locale && I18n.available_locales.include?(locale)
+      session[:locale] = I18n.locale = locale
+    else
+      session[:locale] = I18n.locale = I18n.default_locale
+    end
+
   end
 
   private
-
-  def extract_locale_from_accept_language_header
-    #params[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first.presence
-    params[:locale] || session[:locale]
-  end
 
   def not_authenticated
     redirect_to login_path, alert: 'Please login first'
