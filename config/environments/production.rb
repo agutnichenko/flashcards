@@ -90,8 +90,8 @@ Rails.application.configure do
       address: 'smtp.gmail.com',
       port: 587,
       domain: 'flashcards',
-      user_name: 'test',
-      password: '123456',
+      user_name: ENV[SMTP_SETTINGS_USER_NAME],
+      password:  ENV[SMTP_SETTINGS_PASSWORD],
       authentication: 'plain',
       enable_starttls_auto: true
   }
