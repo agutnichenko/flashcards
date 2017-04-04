@@ -87,12 +87,12 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
-      port: 587,
+      address: ENV['SMTP_SETTINGS_ADDRESS'],
+      port: EVN['SMTP_SETTINGS_PORT'],
       domain: 'flashcards',
-      user_name: ENV[SMTP_SETTINGS_USER_NAME],
-      password:  ENV[SMTP_SETTINGS_PASSWORD],
-      authentication: 'plain',
+      user_name: ENV['SMTP_SETTINGS_USER_NAME'],
+      password:  ENV['SMTP_SETTINGS_PASSWORD'],
+      authentication: ENV['SMTP_SETTINGS_AUTHENTICATION'],
       enable_starttls_auto: true
   }
 end

@@ -14,7 +14,7 @@ RSpec.describe CardsController, type: :feature do
       fill_in 'Original text', with: 'qwerty'
       fill_in 'Translated text', with: 'qwerty'
       click_button 'Create Card'
-      expect(page).to have_current_path(cards_path)
+      expect(page).to have_current_path('/cards?locale=en')
     end
 
     it 'check_xpath' do
