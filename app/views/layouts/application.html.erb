@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-  <title>Флэшкарточкер</title>
+  <title><%= t(:title) %></title>
 
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
@@ -10,26 +10,34 @@
 </head>
 <body>
 <section id='container'>
-  <h1>Флэшкарточкер</h1>
+  <h1><p><%= t(:title) %></p></h1>
   <ul class='navigation-links'>
     <% unless params[:controller] == 'cards' && params[:action] == 'index' %>
         <%= link_to 'All cards', cards_path %>
     <% end %>
-    <%= link_to 'Decks', decks_path %>
-    <%= link_to 'Add card', new_card_path %>
+    <%= link_to t(:add_deck), decks_path %>
+    <%= link_to t(:add_card), new_card_path %>
+    <%= link_to t(:profile), edit_user_path %>
+
   </ul>
-  <p>Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+  <p><%= t(:paragraph) %></p>
+
   <div id='nav'>
     <% if current_user %>
 
-        <%= link_to 'Logout', :logout, method: :delete %>
+        <%= link_to t(:logout), :logout, method: :delete %>
     <% else %>
-        <%= link_to 'Register', new_registration_path %> |
-        <%= link_to 'Login', :login %>
+        <%= link_to t(:register), new_registration_path %> |
+        <%= link_to t(:login), :login %>
+        <% I18n.available_locales.each do |locale| %>
+            <%= link_to locale, root_path(locale: locale),
+                        class: 'navbar-link' %>
+        <% end %>
     <% end %>
   </div>
   <div>
     <p id='notice'><%= flash[:notice] %></p>
+
     <p id='alert'><%= flash[:alert] %></p>
   </div>
   <%= yield %>
@@ -38,7 +46,7 @@
     <div class='notice'><%= flash[:notice] %></div>
 <% end %>
 
-<div><%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %></div> |
+<div><%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %></div>
 <div><%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %></div>
 </body>
 </html>

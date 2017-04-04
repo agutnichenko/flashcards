@@ -13,7 +13,7 @@ class Card < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   def is_automatically_set
-    #self.review_date ||= 3.days.from_now
+    # self.review_date ||= 3.days.from_now
     self.review_date ||= Time.now
   end
 

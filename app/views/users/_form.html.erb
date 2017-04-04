@@ -1,7 +1,7 @@
 <%= simple_form_for @user do |f| %>
 
     <div class='field'>
-      <%= f.label :email %>
+      <%= f.label :email %><br/>
       <%= f.text_field :email %>
     </div>
 
@@ -14,8 +14,9 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
-    <%= f.input :current_deck_id, collection: current_user.decks, label: 'select deck' %>
-
+    <%= f.input :current_deck_id, collection: current_user.decks%>
+    <%= f.label :language %>
+    <%= f.select :language, [['English', 'en'], ['Russian', 'ru']] %>
     <div class='actions'>
       <%= f.submit %>
     </div>
