@@ -88,7 +88,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address: ENV['SMTP_SETTINGS_ADDRESS'],
-      port: EVN['SMTP_SETTINGS_PORT'],
+      port: ENV['SMTP_SETTINGS_PORT'],
       domain: 'flashcards',
       user_name: ENV['SMTP_SETTINGS_USER_NAME'],
       password:  ENV['SMTP_SETTINGS_PASSWORD'],
