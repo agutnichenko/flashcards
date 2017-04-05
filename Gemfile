@@ -61,3 +61,4 @@ gem 'interactor'
 gem 'damerau-levenshtein'
 gem 'rails_12factor', group: :production
 gem 'whenever', :require => false
+gem 'letter_opener', :group => :development
