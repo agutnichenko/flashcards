@@ -28,7 +28,7 @@ class Card < ApplicationRecord
   end
 
   def self.send_notification
-    CardsMailer.pending_cards_notification(user).deliver_now if @card_translation.review_date.to_date == Time.now.to_date
+    CardsMailer.pending_cards_notification(user).deliver_now if self.review_date.to_date == Time.now.to_date
   end
 
 end
