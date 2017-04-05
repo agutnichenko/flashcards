@@ -31,6 +31,7 @@ class Card < ApplicationRecord
     user = User.where('cards.any.review_date <= ?', Time.current)
     user.each do |user|
       CardsMailer.pending_cards_notification(user).deliver_now
+      p user
     end
   end
 end
