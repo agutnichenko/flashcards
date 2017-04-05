@@ -4,6 +4,6 @@ set :output, '/flashcards/log/cron.log'
 #   runner 'Card.send_notification'
 # end
 
-every 1.minute do
+every :hour do
   runner 'Card.send_notification'
 end
