@@ -28,9 +28,9 @@ class Card < ApplicationRecord
   end
 
   def self.send_notification
-    user = User.all
+    user = User.where('cards.any.review_date <= ?', Time.current)
     user.each do |user|
-      CardsMailer.pending_cards_notification(user).deliver_now if user.cards.any.review_date <= Time.current
+      CardsMailer.pending_cards_notification(user).deliver_now
     end
   end
 end
