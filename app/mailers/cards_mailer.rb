@@ -3,8 +3,9 @@ class CardsMailer < ApplicationMailer
   layout 'mailer'
 
   def pending_cards_notification(user)
+    @user = user
     @email = user.email
     @url = 'http://example.com/login'
-    mail(to: user.email, subject: 'you have cards ready for translation')
+    mail(to: @user.email, subject: 'you have cards ready for translation')
   end
 end
