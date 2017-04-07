@@ -33,5 +33,4 @@ class Card < ApplicationRecord
       CardsMailer.pending_cards_notification(user).deliver_now
     end
   end
-
 end
