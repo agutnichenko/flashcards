@@ -56,6 +56,11 @@ class CheckCard
   # end
 
   def call
+    interval = context.user.cards.find(context.user[:interval])
+    repeat = context.user.cards.find(context.user[:repeat])
+    efactor = context.user.cards.find(context.user[:efactor])
+    attempt = context.user.cards.find(context.user[:attempt])
+    distance = context.user.cards.find(context.user[:distance])
     sm_hash = SuperMemo.algorithm(interval, repeat, efactor, attempt, distance, 1)
     @card_translation = context.user.cards.find(context.params[:id])
     if answers_equal?(@card_translation.original_text, context.params[:original_text])
