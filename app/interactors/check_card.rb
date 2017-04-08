@@ -58,25 +58,28 @@ class CheckCard
 
   def call
     card = context.user.cards.find(context.params[:id])
-    sm_hash = SuperMemo.algorithm(card.interval, card.repeat, card.efactor, card.attempt, @distance, 1)
+    distance = DamerauLevenshtein.distance(card.original_text, context.params[:original_text])
+    sm_hash = SuperMemo.algorithm(card.interval, card.repeat, card.efactor, card.attempt, distance, 1)
 
-    if answers_equal?(card.original_text, context.params[:original_text])
-      sm_hash.merge!({review_date: Time.now + interval.to_i.days, attempt: 1})
-      update(sm_hash)
+    if distance <= 1
+      sm_hash.merge!({review_date: Time.now + card.interval.to_i.days, attempt: 1})
       {distance: distance}
-      save
+      card.save
+      context.notice = 'correct_answer'
     else
-      sm_hash.merge!({attempt: [attempt + 1, 5].min})
-      update(sm_hash)
+      sm_hash.merge!({attempt: [card.attempt + 1, 5].min})
       {distance: distance}
+      context.notice = 'incorrect_answer'
     end
   end
 
-  def answers_equal?(original, version)
-    @distance = DamerauLevenshtein.distance(original, version)
-    length = original.size
-    relation = (@distance / length.to_f)
-    relation <= ALLOWED_LEVEL
-  end
+  #sm_hash.merge!({card.attempt: [card.attempt + 1, 5].min})
+
+  # def answers_equal?(original, version)
+  #   @distance = DamerauLevenshtein.distance(original, version)
+  #   length = original.size
+  #   relation = (@distance / length.to_f)
+  #   relation <= ALLOWED_LEVEL
+  # end
 
 end
