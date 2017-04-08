@@ -62,3 +62,5 @@ gem 'damerau-levenshtein'
 gem 'rails_12factor', group: :production
 gem 'whenever', :require => false
 gem 'letter_opener', :group => :development
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
