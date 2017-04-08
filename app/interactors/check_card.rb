@@ -1,5 +1,6 @@
 class CheckCard
   include Interactor
+  require 'supermemo'
   #
   # def call
   #   @card_translation = context.user.cards.find(context.params[:id])
@@ -56,14 +57,10 @@ class CheckCard
   # end
 
   def call
-    interval = context.user.cards.find(context.user[:interval])
-    repeat = context.user.cards.find(context.user[:repeat])
-    efactor = context.user.cards.find(context.user[:efactor])
-    attempt = context.user.cards.find(context.user[:attempt])
-    distance = context.user.cards.find(context.user[:distance])
-    sm_hash = SuperMemo.algorithm(interval, repeat, efactor, attempt, distance, 1)
-    @card_translation = context.user.cards.find(context.params[:id])
-    if answers_equal?(@card_translation.original_text, context.params[:original_text])
+    card = context.user.cards.find(context.params[:id])
+    sm_hash = SuperMemo.algorithm(card.interval, card.repeat, card.efactor, card.attempt, @distance, 1)
+
+    if answers_equal?(card.original_text, context.params[:original_text])
       sm_hash.merge!({review_date: Time.now + interval.to_i.days, attempt: 1})
       update(sm_hash)
       {distance: distance}
@@ -76,9 +73,10 @@ class CheckCard
   end
 
   def answers_equal?(original, version)
-    distance = DamerauLevenshtein.distance(original, version)
+    @distance = DamerauLevenshtein.distance(original, version)
     length = original.size
-    relation = (distance / length.to_f)
+    relation = (@distance / length.to_f)
     relation <= ALLOWED_LEVEL
   end
+
 end
