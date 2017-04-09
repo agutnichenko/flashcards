@@ -6,7 +6,7 @@ RSpec.describe CardsController, type: :controller do
     it 'responds successfully with an HTTP 200 status code' do
       user = FactoryGirl.create(:user)
       login_user(user)
-      get :review
+      get :index
       expect(response).to render_template('index')
     end
   end
