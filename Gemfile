@@ -65,3 +65,4 @@ gem 'letter_opener', :group => :development
 gem 'rollbar'
 gem 'oj', '~> 2.12.14'
 gem 'newrelic_rpm'
+
