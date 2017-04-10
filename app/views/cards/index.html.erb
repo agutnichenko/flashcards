@@ -1,5 +1,5 @@
 <% if @cards.empty? %>
-    <b>no items in store</b>
+    <b xmlns="http://www.w3.org/1999/html">no items in store</b>
 <% else %>
     <table>
       <tr>
@@ -22,23 +22,23 @@
 
 <% end %>
 
-<h1><%= t(:translate_card) %></h1>
-<% if @card.blank? %>
-    <b><%= t(:no_items) %></b>
-<% else %>
-    <p>
+    <h1><%= t(:translate_card) %></h1>
+    <% if @card.blank? %>
+        <b><%= t(:no_items) %></b>
+    <% else %>
+        <p>
+          <%= form_tag trainer_path(@card, remote: true) do %>
       <span id='new_card'>
       <%= t(:eng_translation) %> <%= @card.translated_text %>
           </span>
-    </p>
-    <%= form_tag trainer_path(@card, remote: true) do %>
-        <p>
-          <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
-          <%= t(:your_translation) %> <%= text_field_tag :original_text %>
-          <span id='check_translation'>
+        </p>
+            <p>
+              <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
+              <%= t(:your_translation) %> <%= text_field_tag :original_text %>
+              <span id='check_translation'>
             <%= submit_tag t(:check_translation) %>
                 </span>
+        <% end %>
     <% end %>
-<% end %>
 
-</p>
+    </p>
