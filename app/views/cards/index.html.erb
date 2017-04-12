@@ -27,6 +27,7 @@
         <b><%= t(:no_items) %></b>
     <% else %>
         <p>
+          <span id='my_form'>
           <%= form_tag trainer_path(@card, remote: true) do %>
       <span id='new_card'>
       <%= t(:eng_translation) %> <%= @card.translated_text %>
@@ -35,6 +36,7 @@
             <p>
               <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
               <%= t(:your_translation) %> <%= text_field_tag :original_text %>
+              </span>
               <span id='check_translation'>
             <%= submit_tag t(:check_translation) %>
                 </span>
