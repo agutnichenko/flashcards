@@ -2,6 +2,6 @@ $('#check_translation').append("<%= j render @notice %>");
 $.get(
         '/',
         function (data) {
-            $('my_form').replaceWith('<%= @card %>');
+            $('my_form').replaceWith('<%= j render @card %>');
         }
 );

@@ -25,16 +25,14 @@ ActiveRecord::Schema.define(version: 20170329181136) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string   "original_text",                 null: false
-    t.string   "translated_text",               null: false
+    t.string   "original_text",   null: false
+    t.string   "translated_text", null: false
     t.date     "review_date"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "user_id"
     t.string   "avatar"
     t.integer  "deck_id"
-    t.integer  "counter_correct",   default: 0, null: false
-    t.integer  "counter_incorrect", default: 0, null: false
   end
 
   create_table "decks", force: :cascade do |t|
