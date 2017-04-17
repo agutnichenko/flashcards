@@ -31,3 +31,4 @@ _helper.rb
 config/database.yml
 coverage
 public/uploads
+app/controllers/oauths_controller.rb
