@@ -3,9 +3,11 @@ class CardsController < ApplicationController
 
   def index
     @cards = current_user.cards
+    @card = current_user.cards.get_random
     respond_to do |format|
-      format.html { @card = current_user.cards.get_random }
+      format.html
       format.js
+      format.json { render json: @card.to_json }
     end
   end
 

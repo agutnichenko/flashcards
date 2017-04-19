@@ -1,7 +1,6 @@
-
-<%= form_tag trainer_path(@card), remote: true do %>
-  <%= t(:eng_translation) %> <%= @card.translated_text %>
-  <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
+<%= form_tag trainer_path(card), remote: true do %>
+  <%= t(:eng_translation) %> <%= card.translated_text %>
+  <%= image_tag(card.avatar_url(:thumb)) if card.avatar? %>
   <%= t(:your_translation) %> <%= text_field_tag :original_text %>
   <%= submit_tag t(:check_translation) %>
 <% end %>
