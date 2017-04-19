@@ -21,25 +21,6 @@
       <% end %>
 
 <% end %>
+<span id='check_translation'>
 
-    <h1><%= t(:translate_card) %></h1>
-    <% if @card.blank? %>
-        <b><%= t(:no_items) %></b>
-    <% else %>
-        <p>
-          <span id='my_form'>
-          <%= form_tag trainer_path(@card, remote: true) do %>
-      <%= t(:eng_translation) %> <%= @card.translated_text %>
-          </span>
-        </p>
-            <p>
-              <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
-              <%= t(:your_translation) %> <%= text_field_tag :original_text %>
-              </span>
-              <span id='check_translation'>
-            <%= submit_tag t(:check_translation) %>
-                </span>
-        <% end %>
-    <% end %>
-
-    </p>
+    </span>

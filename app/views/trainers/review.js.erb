@@ -1,7 +1,10 @@
-$('#check_translation').append("<%= j render @notice %>");
-$.get(
-        '/',
-        function (data) {
-            $('my_form').replaceWith('<%= j render @card %>');
-        }
-);
+//$('#check_translation').append("<%= j render @notice %>");
+//$.get(
+//        '/',
+//        function (data) {
+//            $('my_form').replaceWith('<%= j render @card %>');
+//        }
+//);
+
+$("#notice").html('<%= j render @notice %>');
+$("#check_translation").html('<%= j render('review_form', card: @card) %>');
