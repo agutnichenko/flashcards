@@ -1,6 +1,7 @@
 $.get(
-  '/cards.json',
-  function (data) {
+'/cards.json',
+function (data) {
     console.log(data)
-  }
+    $('#check_translation').replaceWith('<%= j render "cards/review_form", card: @card %>');
+}
 );
