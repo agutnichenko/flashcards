@@ -1,5 +1,5 @@
 require 'damerau-levenshtein'
-class TrainersController < ApplicationController
+class Dashboard::TrainersController < ApplicationController
   skip_before_action :require_login
 
     def review
