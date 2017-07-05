@@ -4,6 +4,11 @@ class CardsController < ApplicationController
   def index
     @cards = current_user.cards
     @card = current_user.cards.get_random
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @card.to_json }
+    end
   end
 
   def show
@@ -16,7 +21,8 @@ class CardsController < ApplicationController
     @card = current_user.cards.new
   end
 
-  def edit; end
+  def edit;
+  end
 
   def create
     @card = current_user.cards.create(card_params)

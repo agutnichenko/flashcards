@@ -1,12 +1,12 @@
 <% if @cards.empty? %>
-    <b>no items in store</b>
+    <b xmlns="http://www.w3.org/1999/html">no items in store</b>
 <% else %>
     <table>
       <tr>
-        <th><%=t(:image) %></th>
-        <th><%=t(:original_text) %></th>
-        <th><%=t(:translated_text) %></th>
-        <th><%=t(:review_date) %></th>
+        <th><%= t(:image) %></th>
+        <th><%= t(:original_text) %></th>
+        <th><%= t(:translated_text) %></th>
+        <th><%= t(:review_date) %></th>
       </tr>
 
       <% @cards.each do |card| %>
@@ -16,26 +16,12 @@
             <td><%= card.translated_text %></td>
             <td><%= card.review_date %></td>
             <td><%= link_to t(:edit), edit_card_path(card) %></td>
-            <td><%= button_to t(:delete), card_path(card), method: :delete, data: { confirm: t(:confirm) } %></td>
+            <td><%= button_to t(:delete), card_path(card), method: :delete, data: {confirm: t(:confirm)} %></td>
           </tr>
       <% end %>
 
 <% end %>
-
-<h1><%= t(:translate_card) %></h1>
-<% if @card.blank? %>
-    <b><%= t(:no_items) %></b>
-<% else %>
-    <p>
-       <%= t(:eng_translation) %> <%= @card.translated_text %>
-    </p>
-
-    <p>
-      <%= form_tag trainer_path(@card) do %>
-          <%= image_tag(@card.avatar_url(:thumb)) if @card.avatar? %>
-           <%= t(:your_translation) %> <%= text_field_tag :original_text %>
-          <%= submit_tag t(:check_translation) %>
-      <% end %>
-<% end %>
-
-</p>
+<span id='check_translation'>
+<%= render 'review_form', card: @card %>
+  <%=  trainer_path(@card.id) %>
+</span>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329181136) do
+ActiveRecord::Schema.define(version: 20170419134530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20170329181136) do
     t.integer  "user_id"
     t.string   "avatar"
     t.integer  "deck_id"
-    t.integer  "counter_correct",   default: 0, null: false
-    t.integer  "counter_incorrect", default: 0, null: false
+    t.integer  "counter_incorrect", default: 0
+    t.integer  "counter_correct",   default: 0
   end
 
   create_table "decks", force: :cascade do |t|

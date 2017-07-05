@@ -39,7 +39,7 @@ RSpec.describe DecksController, type: :controller do
   describe "GET #index" do
     it "assigns all decks as @decks" do
       deck = Deck.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      get :review, params: {}, session: valid_session
       expect(assigns(:decks)).to eq([deck])
     end
   end
